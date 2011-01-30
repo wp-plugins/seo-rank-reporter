@@ -54,6 +54,7 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 
 = 1.0.1 =
 * Fixed jQuery issue for graph
+* Removed the possibility of deleting gathered data when an upgrade occurs
 
 = 1.0 =
 * First Release
@@ -61,7 +62,7 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 == Upgrade Notice == 
 
 = 1.0.1 = 
-* jQuery issue for graph has been fixed
+jQuery issue fixed, data won't be deleted on upgrade
 
 = 1.0 =
 No upgrades needed yet
