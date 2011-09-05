@@ -24,7 +24,7 @@ jQuery(document).ready(function () {
 		$kw_sengine_country = get_option('kw_seo_sengine_country');	
 
 $displayNone = "";
-if ($_POST['first_submit_keyw'] == "Add to Reporter" && $_POST['keyword_item'] != "") {
+if ($_POST['first_submit_keyw'] == "Add to Reporter" && $_POST['keyword_item'] != "" && $_POST['entry_url'] != "http://" && $_POST['entry_url'] != "") {
 	$kw_quick_url = trim($_POST['entry_url']);
 	$kw_quick_keyw = stripslashes(trim($_POST['keyword_item']));
 	$checked_rank = kw_rank_checker($kw_quick_keyw, $kw_quick_url,TRUE);
