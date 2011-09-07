@@ -101,7 +101,7 @@ if ($_POST['first_submit_keyw'] == "Add to Reporter" && $_POST['keyword_item'] !
 		if ($_POST['first_submit_keyw'] == "Add to Reporter" && $_POST['keyword_item'] == "") {
 			$kw_keyw_error_msg = "<span style='color:red;'> You must add a keyword.</span>";
 		}
-		if ($_POST['first_submit_keyw'] == "Add to Reporter" && ($_POST['entry_url'] != "http://" || $_POST['entry_url'] != "")) {
+		if ($_POST['first_submit_keyw'] == "Add to Reporter" && ($_POST['entry_url'] == "http://" || $_POST['entry_url'] == "")) {
 			$kw_url_error_msg = "<span style='color:red;'> You must add a full URL.</span>";
 		}
 		
