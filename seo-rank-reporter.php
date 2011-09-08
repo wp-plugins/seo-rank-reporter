@@ -30,9 +30,9 @@ function kw_seo_rank_menu(){
 	add_action( 'admin_head-'. $kw_seo_rank_visits, 'kw_seo_admin_header' );
 	add_action( 'admin_head-'. $kw_seo_keywords_add, 'kw_seo_admin_header' );
 	add_action('admin_head-'. $kw_seo_rank_settings, 'kw_seo_do_some_ajax');
-		add_action('admin_head-'. $kw_seo_rank_settings, 'kw_seo_admin_header');
-		add_action( 'admin_footer-'. $kw_seo_rank_settings, 'kw_seo_admin_footer' );
-
+	add_action('admin_head-'. $kw_seo_rank_settings, 'kw_seo_admin_header');
+	add_action( 'admin_footer-'. $kw_seo_rank_settings, 'kw_seo_admin_footer' );
+	add_action( 'admin_footer-'. $kw_seo_rank_main, 'kw_seo_admin_footer' );
 
 }
 
