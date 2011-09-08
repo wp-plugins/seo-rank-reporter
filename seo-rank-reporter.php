@@ -4,7 +4,7 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.0
+Version: 2.1
 Author URI: http://www.kwista.com
 */
 register_activation_hook(__FILE__,'seoRankReporterInstall');
