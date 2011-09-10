@@ -5,13 +5,19 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: seo, rank, google, rankings, SERP, kwista
 Requires at least: 2.9
 Tested up to: 3.2.1
-Stable tag: 2.1
+Stable tag: 2.1.1
 
-Track your Google rankings every 3 days and see reports of your progress in an easy-to-read graph. 
+Track your Google rankings every 3 days and see reports of your progress in a graph. 
 
 == Description ==
 
-Based on keywords you choose, the SEO Rank Reporter plugin will track your Google rankings every 3 days and report the data in an easy-to-read graph. You will also be able to visualize your traffic flow in response to ranking changes and receive emails notifying you of major rank changes. 
+Based on keywords you choose, the SEO Rank Reporter plugin will track your Google rankings every 3 days and report the data in an easy-to-read graph. 
+
+Learn [How to use the SEO Rank Reporter Plugin](http://www.youtube.com/watch?v=0gXyUyq1FcQ)
+
+http://www.youtube.com/watch?v=0gXyUyq1FcQ
+
+You will also be able to visualize your traffic flow in response to ranking changes and receive emails notifying you of major rank changes. 
 
 **Features:**
 

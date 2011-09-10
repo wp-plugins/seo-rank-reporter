@@ -4,7 +4,7 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.0
+Version: 2.1.1
 Author URI: http://www.kwista.com
 */
 register_activation_hook(__FILE__,'seoRankReporterInstall');
@@ -30,9 +30,9 @@ function kw_seo_rank_menu(){
 	add_action( 'admin_head-'. $kw_seo_rank_visits, 'kw_seo_admin_header' );
 	add_action( 'admin_head-'. $kw_seo_keywords_add, 'kw_seo_admin_header' );
 	add_action('admin_head-'. $kw_seo_rank_settings, 'kw_seo_do_some_ajax');
-		add_action('admin_head-'. $kw_seo_rank_settings, 'kw_seo_admin_header');
-		add_action( 'admin_footer-'. $kw_seo_rank_settings, 'kw_seo_admin_footer' );
-
+	add_action('admin_head-'. $kw_seo_rank_settings, 'kw_seo_admin_header');
+	add_action( 'admin_footer-'. $kw_seo_rank_settings, 'kw_seo_admin_footer' );
+	add_action( 'admin_footer-'. $kw_seo_rank_main, 'kw_seo_admin_footer' );
 
 }
 
@@ -367,7 +367,6 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 				echo "<br />cURL error:" . curl_error($ch);
 				echo "<br />url: " . $value;
 				echo "<br />";
-				break;
 			}
 		$dom = new DOMDocument();
 		@$dom->loadHTML($html);
