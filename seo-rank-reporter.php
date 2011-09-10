@@ -367,7 +367,6 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 				echo "<br />cURL error:" . curl_error($ch);
 				echo "<br />url: " . $value;
 				echo "<br />";
-				break;
 			}
 		$dom = new DOMDocument();
 		@$dom->loadHTML($html);

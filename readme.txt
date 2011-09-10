@@ -7,11 +7,16 @@ Requires at least: 2.9
 Tested up to: 3.2.1
 Stable tag: 2.1
 
-Track your Google rankings every 3 days and see reports of your progress in an easy-to-read graph. 
+Track your Google rankings every 3 days and see reports of your progress in a graph. 
 
 == Description ==
 
-Based on keywords you choose, the SEO Rank Reporter plugin will track your Google rankings every 3 days and report the data in an easy-to-read graph. You will also be able to visualize your traffic flow in response to ranking changes and receive emails notifying you of major rank changes. 
+Based on keywords you choose, the SEO Rank Reporter plugin will track your Google rankings every 3 days and report the data in an easy-to-read graph. 
+Watch the Video: [How to use the SEO Rank Reporter](http://www.youtube.com/watch?v=_LlAj5SwMro):
+
+http://www.youtube.com/watch?v=_LlAj5SwMro
+
+You will also be able to visualize your traffic flow in response to ranking changes and receive emails notifying you of major rank changes. 
 
 **Features:**
 
