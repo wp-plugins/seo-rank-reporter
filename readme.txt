@@ -60,6 +60,10 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 
 == Changelog ==
 
+= 2.1.1 =
+
+* Fixed break error when adding keywords
+
 = 2.1 = 
 
 * Added validation to the Add Keywords page
@@ -89,7 +93,11 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 
 * First Release
 
-== Upgrade Notice == 
+== Upgrade Notice ==
+
+= 2.1.1 =
+
+Worked on break error when adding keywords 
 
 = 2.1 = 
 
