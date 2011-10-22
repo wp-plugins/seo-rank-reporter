@@ -4,7 +4,7 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.1.1
+Version: 2.1.2
 Author URI: http://www.kwista.com
 */
 register_activation_hook(__FILE__,'seoRankReporterInstall');
@@ -371,10 +371,10 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 		$dom = new DOMDocument();
 		@$dom->loadHTML($html);
 		$xpath = new DOMXPath($dom);
-		$cite_urls = $xpath->query('/html//div[@id="ires"]/ol/li//h3[not(contains(@style, "display:inline"))]/a');
+		$cite_urls = $xpath->query('/html//div[@id="ires"]/ol/li//h3[not(ancestor::span)]/a');
 		
 		if($first_time) {
-			$results = array(htmlspecialchars(urldecode($target_keyword), ENT_QUOTES), array(htmlspecialchars($entered_url, ENT_QUOTES)), 'Google', date('Y-m-d'), array('-1'), '-1');
+			$results = array(htmlspecialchars(urldecode($target_keyword), ENT_QUOTES), array(htmlspecialchars($entered_url, ENT_QUOTES)), $kw_sengine_country, date('Y-m-d'), array('-1'), '-1');
 			
 
 			$kw_parsed_entered_url = parse_url($entered_url);
@@ -398,7 +398,7 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 				//if ($kw_parsed_entered_url['host'].$kw_parsed_entered_url['path'] == substr($kw_parsed_url['host'].$kw_parsed_url['path'], $url_pos, $entered_len) ) {
 					$results[1][$o] = htmlspecialchars($url, ENT_QUOTES);
 					$results[4][$o] = $rank;
-					$results[5] = $kw_sengine_country;
+					$results[5] = ceil($rank/10);
 					$result_found = TRUE;
 					$o++;
 				}
@@ -410,7 +410,7 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 			}
 			
 		} else {
-			$results = array($target_key, htmlspecialchars($original_entered_url, ENT_QUOTES), 'Google', date('Y-m-d'), '-1', '-1');
+			$results = array($target_key, htmlspecialchars($original_entered_url, ENT_QUOTES), $kw_sengine_country, date('Y-m-d'), '-1', '-1');
 			
 			foreach ($cite_urls as $entry) {
 				$url = $entry->getAttribute('href');
@@ -418,7 +418,7 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 				if ($original_entered_url == $url) {
 					$results[1] = htmlspecialchars($url, ENT_QUOTES);
 					$results[4] = $rank;
-					$results[5] = $kw_sengine_country;
+					$results[5] = ceil($rank/10);
 					$result_found = TRUE;
 					break;
 				}
