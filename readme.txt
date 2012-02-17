@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: seo, rank, google, rankings, SERP, kwista
 Requires at least: 2.9
 Tested up to: 3.3.1
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 
 Track your Google rankings every 3 days and see reports of your progress in a graph. 
 
@@ -60,6 +60,10 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 
 == Changelog ==
 
+= 2.1.4 = 
+
+* Fixed bug where all rankings were reported as Not in Top 100
+
 = 2.1.3 = 
 
 * Fixed bug where all rankings were reported as Not in Top 100
@@ -102,6 +106,10 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 * First Release
 
 == Upgrade Notice ==
+
+= 2.1.4 =
+
+Fixed another issue from previous bug
 
 = 2.1.3 =
 

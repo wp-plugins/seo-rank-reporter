@@ -4,7 +4,7 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.1.3
+Version: 2.1.4
 Author URI: http://www.kwista.com
 */
 register_activation_hook(__FILE__,'seoRankReporterInstall');
@@ -389,14 +389,7 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 			$o = 0;
 			foreach ($cite_urls as $entry) {
 				$url = $entry->getAttribute('href');
-				
-				if (substr($url, 0, 7) == '/url?q=') {
-					$url = str_ireplace('/url?q=', '', $url);
-				}
-				if (stristr($url, '&sa=U&')) {
-					$g_clean_url = explode('&sa=U&', $url);
-					$url = $g_clean_url[0];
-				}
+				$url = kw_fix_g_url($url);
 				
 				@$kw_parsed_url = parse_url($url); 
 				
@@ -423,7 +416,8 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 			
 			foreach ($cite_urls as $entry) {
 				$url = $entry->getAttribute('href');
-							
+				$url = kw_fix_g_url($url);
+				
 				if ($original_entered_url == $url) {
 					$results[1] = htmlspecialchars($url, ENT_QUOTES);
 					$results[4] = $rank;
@@ -685,6 +679,18 @@ if ($_POST['dnload-csv'] == "Download CSV") {
 		
 		exit();
 	}
+}
+
+function kw_fix_g_url($url) {
+	if (substr($url, 0, 7) == '/url?q=') {
+		$url = str_ireplace('/url?q=', '', $url);
+	}
+	
+	if (stristr($url, '&sa=U&')) {
+		$g_clean_url = explode('&sa=U&', $url);
+		$url = $g_clean_url[0];
+	}
+	return $url;
 }
 		$kw_sengine_country = get_option('kw_seo_sengine_country');	
 ?>
