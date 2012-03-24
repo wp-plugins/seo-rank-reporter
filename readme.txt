@@ -4,7 +4,7 @@ Donate link: http://www.kwista.com/
 Tags: seo, rank, google, rankings, SERP, kwista
 Requires at least: 2.9
 Tested up to: 3.0.4
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 
 Track your Google rankings every 3 days and see reports of your progress in an easy-to-read graph. 
 
