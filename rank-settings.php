@@ -232,6 +232,7 @@ if ($kw_em_spots !== "" && $kw_seo_emails !== "") {
             <ul>
               <li><a href="http://wordpress.org/extend/plugins/seo-rank-reporter/" target="_blank">Rate it on Wordpress.org</a></li>
               <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZ82CCVP65RNN" target="_blank">Donate!</a></li>
+              <li><a href="http://wordpress.org/extend/plugins/seo-rank-reporter/" target="_blank">Say that it works</a></li>
             </ul><br />
           </div>
         </div>

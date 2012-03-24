@@ -4,7 +4,7 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.1.4
+Version: 2.1.5
 Author URI: http://www.kwista.com
 */
 register_activation_hook(__FILE__,'seoRankReporterInstall');
@@ -471,10 +471,10 @@ function kw_cron_rank_checker() {
 				
 				$kw_rnk_change = $previous_rank-$current_rank;
 				if ($current_rank == 100) {
-					$current_rank = "<em>Not in top 100</em>";
+					$current_rank = "Not in top 100";
 				}
 				if ($previous_rank == 100) {
-					$previous_rank = "<em>Not in top 100</em>";
+					$previous_rank = "Not in top 100";
 				}
 				if (($kw_rnk_change >= $kw_em_spots) || ($kw_rnk_change*(-1) >= $kw_em_spots)) {
 					if ($kw_rnk_change < 0 ) {
@@ -482,13 +482,14 @@ function kw_cron_rank_checker() {
 					} else {
 						$email_msg .= '<tr><td>'.$kw_keyw.'</td><td>'.$kw_url.'</td><td>'.$current_rank.'</td><td>'.$previous_rank.'</td><td style="color:green;">'.$kw_rnk_change.' '.$rank_plus.'</td></tr>';
 					}
+					$plain_email_msg .= $kw_keyw." - ".$kw_url." \r\nCurrent Rank: ".$current_rank.",  Previous Rank: ".$previous_rank.",  Rank Change: ".$kw_rnk_change.$rank_plus. " \r\n \r\n";
 				}
 			}
 			
 		} //end foreach	
 				
 		if ($email_msg != "") {
-			kw_seoRankReporterSendEmail($email_msg);
+			kw_seoRankReporterSendEmail($email_msg, $plain_email_msg);
 		}
 		
 		$kw_next_date = time()+259200;
@@ -503,11 +504,12 @@ function kw_cron_rank_checker() {
 	}	
 	
 }	
-function kw_seoRankReporterSendEmail($email_msg) {
+function kw_seoRankReporterSendEmail($email_msg, $plain_email_msg) {
 		$kw_seo_emails = get_option('kw_seo_emails');
 		
 		$kw_date_last = date("M-d-Y", get_option('kw_rank_nxt_date')-259200);
 		$email_msg = '<h2>Keyword Ranking Changes from ' . get_bloginfo("url") . '</h2><p><em>The following keywords have changed ranking positions on Google since the last rank check on <strong>' . $kw_date_last .'</strong>:</em></p><table cellpadding="7" cellspacing="0"><thead><tr bgcolor="#FFFF99"><th>Keyword</th><th>URL</th><th>Current Rank</th><th>Previous Rank</th><th>Rank Change</th></tr></thead>' . $email_msg . '</table><br><p style="font-size:10px;color:#999999"><a href="'. get_bloginfo("url") .'/wp-admin/admin.php?page=seo-rank-settings">Change email settings</a> - Rank notifications brought to you by SEO Rank Reporter - <a href="http://www.kwista.com">Kwista</a>.</p>';
+		$plain_email_msg = "Keyword Ranking Changes from ".get_bloginfo('url') . " \r\n \r\n". "The following keywords have changed ranking positions on Google since the last rank check on ".$kw_date_last . ". \r\n \r\n". $plain_email_msg . " \r\n \r\n Change email settings at ". get_bloginfo("url") ."/wp-admin/admin.php?page=seo-rank-settings \r\n \r\n Rank notifications brought to you by SEO Rank Reporter - http://wordpress.org/extend/plugins/seo-rank-reporter/";
 		
 		$to = $kw_seo_emails;
 		$subject = "ALERT: Keyword Ranking Changes from " . str_replace('http://', '', get_bloginfo('url'));
@@ -515,7 +517,8 @@ function kw_seoRankReporterSendEmail($email_msg) {
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			
-		mail($to, $subject, $email_msg, $headers);
+		if(mail($to, $subject, $email_msg, $headers)) {
+		} else { mail($to, $subject, $plain_email_msg); }
 }
 function kw_seoRankReporterAddKeywords($kw_keyword, $kw_url) {
 	$kw_url = htmlspecialchars(stripslashes(trim($kw_url)), ENT_QUOTES);

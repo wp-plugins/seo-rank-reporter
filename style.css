@@ -182,3 +182,11 @@ line-height:16px;
 .postbox-container .meta-box-sortables { 
 min-height:inherit !important;
 }
+
+.kw-check-now {
+	margin-left:30px;
+}
+
+.kw-check-now-form {
+	display:inline;
+}

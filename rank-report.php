@@ -8,8 +8,18 @@ if (isset($_POST['kw_remove_keyword'] ) ) {
 }
 if ($_POST['entry_url'] !== "" && $_POST['keyword_item']!== "" && ($_POST['submit_keyw'] == "Add to Reporter" ) || $_POST['submit_keyw'] == "Confirm and Add to Reporter")  {
 	$return_msg = kw_seoRankReporterAddKeywords($_POST['keyword_item'], $_POST['entry_url']);
-	//$keyw_addition = TRUE;
 }
+
+if ($_POST['check-rankings-now'] == "Check Rankings Now" && (date("d", get_option('kw_rank_nxt_date')-259200)) < date('d') ){
+	kw_cron_rank_checker();
+	$kw_check_now_button = '';
+} elseif ($_POST['check-rankings-now'] == "Check Rankings Now" && date("d", get_option('kw_rank_nxt_date')-259200) >= date('d')) {
+	$return_msg = "<div class='error'>Rankings were not checked. Rankings can only be checked once per day.</div>"; 
+	$kw_check_now_button = '';
+} elseif (date("d", get_option('kw_rank_nxt_date')-259200) < date('d')) {
+	$kw_check_now_button = '<form method="post" action="" class="kw-check-now-form"><input type="submit" name="check-rankings-now" class="button-primary kw-check-now" value="Check Rankings Now" /></form>';
+}
+
 ?>
   
   <script language="javascript">
@@ -53,8 +63,7 @@ require('no-keywords.php');
 <div style="height:30px;">
 			<input type="text" id="mindatepicker" class="fav-first" value="" />
            to <input type="text" id="maxdatepicker" class="fav-first" value="" />
-	
-		
+			<?php echo $kw_check_now_button; ?>	
 </div>
 <div id="placeholder" style="width:95%;height:400px;margin-left:10px;"></div><br />
   <table border="0" cellpadding="0" cellspacing="0" class="widefat sortable" id="kw_keyword_table">
