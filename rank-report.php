@@ -1,7 +1,13 @@
+<?php 
+//For i18n
+global $kw_add_to_reporter, $kw_confirm_add_to_reporter, $kw_check_rankings_now, $kw_not_yet_checked, $kw_not_in_top, $kw_click_to_sort, $kw_opens_new_window, $kw_i18n_remove, $kw_download_csv, $kw_i18n_rank, $kw_th_graph, $kw_th_keywords, $kw_th_url, $kw_th_current_rank, $kw_th_rank_change, $kw_th_start_rank, $kw_th_visits, $kw_th_start_date, $kw_i18n_plugin_name, $kw_i18n_to;
+
+?>
+
 <div class="wrap">
-  <h2>SEO Rank Reporter</h2>
+  <h2><?php echo $kw_i18n_plugin_name; ?></h2>
   <?php
-  		$kw_sengine_country = get_option('kw_seo_sengine_country');	
+  		$kw_sengine_country = kw_get_sengine_url();	
 
 if (isset($_POST['kw_remove_keyword'] ) ) {
 	$remove_msg = kw_seoRankReporterRemoveKeyword($_POST['kw_remove_keyword'], $_POST['kw_remove_url']);
@@ -14,7 +20,7 @@ if ($_POST['check-rankings-now'] == "Check Rankings Now" && (date("d", get_optio
 	kw_cron_rank_checker();
 	$kw_check_now_button = '';
 } elseif ($_POST['check-rankings-now'] == "Check Rankings Now" && date("d", get_option('kw_rank_nxt_date')-259200) >= date('d')) {
-	$return_msg = "<div class='error'>Rankings were not checked. Rankings can only be checked once per day.</div>"; 
+	$return_msg = "<div class='error'>".__('Rankings were not checked. Rankings can only be checked once per day.')."</div>"; 
 	$kw_check_now_button = '';
 } elseif (date("d", get_option('kw_rank_nxt_date')-259200) < date('d')) {
 	$kw_check_now_button = '<form method="post" action="" class="kw-check-now-form"><input type="submit" name="check-rankings-now" class="button-primary kw-check-now" value="Check Rankings Now" /></form>';
@@ -24,7 +30,7 @@ if ($_POST['check-rankings-now'] == "Check Rankings Now" && (date("d", get_optio
   
   <script language="javascript">
 	function confirmRemove() {
-		return confirm("Do you really want to remove this keyword? This action cannot be undone.")
+		return confirm("<?php _e('Do you really want to remove this keyword? This action cannot be undone.'); ?>")
 	} 
 	$(document).ready(function () { 
   $(".kw_td_bg_color td").fadeTo("fast", 0.1);
@@ -39,63 +45,65 @@ if ($_POST['check-rankings-now'] == "Check Rankings Now" && (date("d", get_optio
 			checkboxParentTr.removeClass("selected-row");
 		}
 	});
-			
-   
   
 });
 </script>
   
-<?php if ($return_msg !== "") { 
+<?php 
+
+if ($return_msg !== "") { 
 echo $return_msg;
 }
 if ($remove_msg !== "") {
 echo $remove_msg; 
 }
-?>
-<?php
+
 $keywurl_array = seoRankReporterGetKeywurl();
 if (empty($keywurl_array)) {
 require('no-keywords.php');
 } else {
+kw_top_right_affiliate(); 
 ?>
-<div style="float:right;font-size:11px;padding-right:20px;margin-top:-10px;text-align:right;"><strong>Get keyword rankings checked daily</strong> <br />
-<a href="http://authoritylabs.com/?src=reporter-wp-plugin" target="_blank">Try Authority Labs</a> - 10 Keywords Free</div>
+
 <div style="height:30px;">
 			<input type="text" id="mindatepicker" class="fav-first" value="" />
-           to <input type="text" id="maxdatepicker" class="fav-first" value="" />
+           <?php echo $kw_i18n_to; ?> <input type="text" id="maxdatepicker" class="fav-first" value="" />
 			<?php echo $kw_check_now_button; ?>	
 </div>
 <div id="placeholder" style="width:95%;height:400px;margin-left:10px;"></div><br />
+
   <table border="0" cellpadding="0" cellspacing="0" class="widefat sortable" id="kw_keyword_table">
     <thead>
       <tr>
-        <th title="Click to Sort">#</th>
-        <th title="Click to Sort">Graph</th>
-        <th title="Click to Sort">Keywords</th>
-        <th title="Click to Sort">URL</th>
-        <th title="Click to Sort">Current Rank</th>
-        <th title="Click to Sort">Rank Change</th>
-        <th title="Click to Sort">Start Rank</th>
-        <th title="Click to Sort">Visits</th>
-        <th title="Click to Sort">Start Date</th>
+        <th title="<?php echo $kw_click_to_sort; ?>">#</th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_graph; ?></th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_keywords; ?></th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_url; ?></th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_current_rank; ?></th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_rank_change; ?></th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_start_rank; ?></th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_visits; ?></th>
+        <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_start_date; ?></th>
         <th></th>
       </tr>
     </thead>
     <tfoot>
       <tr>
         <th></th>
-        <th>Graph</th>
-        <th>Keywords</th>
-        <th>URL</th>
-        <th>Current Rank</th>
-        <th>Rank Change</th>
-        <th>Start Rank</th>
-        <th>Visits</th>
-        <th>Start Date</th>
+        <th><?php echo $kw_th_graph; ?></th>
+        <th><?php echo $kw_th_keywords; ?></th>
+        <th><?php echo $kw_th_url; ?></th>
+        <th><?php echo $kw_th_current_rank; ?></th>
+        <th><?php echo $kw_th_rank_change; ?></th>
+        <th><?php echo $kw_th_start_rank; ?></th>
+        <th><?php echo $kw_th_visits; ?></th>
+        <th><?php echo $kw_th_start_date; ?></th>
         <th></th>
       </tr>
     </tfoot>
     <?php
+	
+	
 	
 	$kw_keyw_visits_array = get_option('kw_keyw_visits');
 	$kw_plot_graph_array = "";
@@ -106,7 +114,7 @@ foreach($keywurl_array as $keywurl) {
 	$kw_url = trim($keywurl[url]);
 	$kw_keyw = trim($keywurl[keyword]);
 	
-	$current_rank = "<em>Not yet checked</em>";
+	$current_rank = "<em>".$kw_not_yet_checked."</em>";
 	$start_rank = "";
 	$new_date = "";
 	$old_date = "";
@@ -157,7 +165,7 @@ foreach($keywurl_array as $keywurl) {
 		$old_date_array = explode("-", $results_array[0][date]);
 		$old_date = date('M', mktime(0, 0, 0, $old_date_array[1], $old_date_array[2], $old_date_array[0]) ).'-'.$old_date_array[2].'-'.$old_date_array[0];
 	}
-	if ($current_rank !== "<em>Not yet checked</em>" && $start_rank !== "-1" && $current_rank !== "-1" ) {
+	if ($current_rank !== "<em>".$kw_not_yet_checked."</em>" && $start_rank !== "-1" && $current_rank !== "-1" ) {
 		$choices = "choices".$p;
 		$p++;
 		$disabled = "";
@@ -178,7 +186,7 @@ foreach($keywurl_array as $keywurl) {
 		
 		$rank_change = (100-$current_rank).'+';
 		$rank_box = "kw_green_arrow";
-		$start_rank = "<em>Not in top 100</em>";
+		$start_rank = "<em>".$kw_not_in_top."</em>";
 	} elseif ($current_rank == "-1" && $start_rank > 0) {
 		$choices = "choices".$p;
 		$p++;
@@ -186,11 +194,11 @@ foreach($keywurl_array as $keywurl) {
 		
 		$rank_change = ($start_rank-100).'+';
 		$rank_box = "kw_red_arrow";
-		$current_rank = "<em>Not in top 100</em>";
+		$current_rank = "<em>".$kw_not_in_top."</em>";
 	} elseif ($current_rank == "-1") {
 		$rank_box = "kw_gray_line";
-		$current_rank = "<em>Not in top 100</em>";
-		$start_rank = "<em>Not in top 100</em>";
+		$current_rank = "<em>".$kw_not_in_top."</em>";
+		$start_rank = "<em>".$kw_not_in_top."</em>";
 		
 		if ($graph_it) {
 			$choices = "choices".$p;
@@ -213,8 +221,8 @@ foreach($keywurl_array as $keywurl) {
     <tr class="<?php echo $kw_td_bg_color; ?>">
       <td><?php echo $k; ?></td>
       <td id="<?php echo $choices; ?>"><?php echo $disabled; ?></td>
-      <td><a href='<?php echo $kw_sengine_country; ?>search?q=<?php echo urlencode($kw_keyw); ?>&pws=0' style="color:<?php echo $keyw_color; ?>;" target="_blank" title="Opens New Window"><?php echo $kw_keyw; ?></a></td>
-      <td class="b-url"><a href="<?php echo $kw_url; ?>" target="_blank" title="Opens New Window"><?php echo $kw_url; ?></a></td>
+      <td><a href='<?php echo $kw_sengine_country; ?>search?q=<?php echo urlencode($kw_keyw); ?>&pws=0' style="color:<?php echo $keyw_color; ?>;" target="_blank" title="<?php echo $kw_opens_new_window; ?>"><?php echo $kw_keyw; ?></a></td>
+      <td class="b-url"><a href="<?php echo $kw_url; ?>" target="_blank" title="<?php echo $kw_opens_new_window; ?>"><?php echo $kw_url; ?></a></td>
       <td><?php echo $current_rank; ?></td>
       <td><div class="<?php echo $rank_box; ?> kw_change"></div>
         <?php echo $rank_change; ?></td>
@@ -224,7 +232,7 @@ foreach($keywurl_array as $keywurl) {
       <td><form action='' method='post'>
           <input type='hidden' name='kw_remove_keyword' value='<?php echo $kw_keyw; ?>' />
           <input type='hidden' name='kw_remove_url' value='<?php echo $kw_url; ?>' />
-          <input type='submit' value='Remove' class='button' onclick='return confirmRemove()' />
+          <input type='submit' value='<?php echo $kw_i18n_remove; ?>' class='button' onclick='return confirmRemove()' />
         </form>
     </tr>
     <?php $k++;  } ?>
@@ -233,14 +241,16 @@ foreach($keywurl_array as $keywurl) {
     <tr>
       <td style="border-bottom:none;"><?php $kw_date_next = date("M-d-Y", get_option('kw_rank_nxt_date'));
 $kw_date_last = date("M-d-Y", get_option('kw_rank_nxt_date')-259200);
-echo "Last rank check was on <strong>".$kw_date_last."</strong><br>Next rank check scheduled for <strong>".$kw_date_next."</strong>"; ?></td>
-      <td style="border-bottom:none"> *When <strong>Rank Change</strong> includes <strong>+</strong>, this keyword started ranking outside the first 100 results<br />
-        *Visits are the number of page visits since the last rank check (every 3 days).  Visits will be blank if the url does not contain <strong><?php echo get_bloginfo('url'); ?></strong>. </td>
+
+printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s'), "<strong>".$kw_date_last."</strong><br>", "<strong>".$kw_date_next."</strong>");
+//echo "Last rank check was on <strong>".$kw_date_last."</strong><br>Next rank check scheduled for <strong>".$kw_date_next."</strong>"; ?></td>
+ 
+      <td style="border-bottom:none"><?php printf(__('*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking outside the first 100 results%3$s *Visits are the number of page visits since the last rank check (every 3 days). Visits will be blank if the URL does not contain %4$s'), "<strong>", "</strong>", "<br />", "<strong>".get_bloginfo('url')."</strong>"); ?> </td>
     </tr>
   </table>
   <div>
 <form action="" method="post">
-<input type="submit" value="Download CSV" name="dnload-csv" class="button" />
+<input type="submit" value="<?php echo $kw_download_csv; ?>" name="dnload-csv" class="button" />
 </form>
 </div>
   <br />
@@ -297,6 +307,9 @@ $.each(datasets, function(key, val) {
     val.color = i;
     ++i;
 });
+
+
+
 var choiceContainer = $("#choices0");
 var icounter = 0;
 var checked = 'checked="checked"';
@@ -367,7 +380,7 @@ $("#placeholder").bind("plothover", function (event, pos, item) {
 				var myDate = new Date(x);
 				var monthNumber = myDate.getMonth();
                 showTooltip(item.pageX, item.pageY,
-                            item.series.label + "<br>Rank: " + y + "<br>" + months[monthNumber] + "-" + (myDate.getDate()) + "-" + myDate.getFullYear());
+                            item.series.label + "<br><?php echo $kw_i18n_rank; ?>: " + y + "<br>" + months[monthNumber] + "-" + (myDate.getDate()) + "-" + myDate.getFullYear());
             }
 			
         else {
@@ -376,9 +389,11 @@ $("#placeholder").bind("plothover", function (event, pos, item) {
         }
     }
 });
+
 plotAccordingToChoices();
 //plotAccordingToDate(dmind,dmaxd);
 function plotAccordingToChoices() {
+	
     var data = [];
     var icounter = 0;	
 	$.each(datasets, function(key, val) {
@@ -401,12 +416,14 @@ function plotAccordingToChoices() {
                lines: { show: true },
                points: { show: true }
            }, legend: { margin: 10, backgroundOpacity: .5, position: "sw" },
-           grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#fff"] } }, yaxis: { tickFormatter: negformat, max: "-1" }, xaxis: { mode: "time",  timeformat: "%b-%d-%y",  min: (new Date(daMin)).getTime(), max: (new Date(daMax)).getTime() }, selection: { mode: "x" },  });
+           grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#fff"] } }, 
+		   yaxis: { tickFormatter: negformat, max: "-1" }, xaxis: { mode: "time",  timeformat: "%b-%d-%y",  min: (new Date(daMin)).getTime(), max: (new Date(daMax)).getTime() }, selection: { mode: "x" },  });
 		   
 	
 		   
 }
 function plotAccordingToDate(dmin,dmax) {
+	
     var data = [];
     var icounter = 0;	
 	$.each(datasets, function(key, val) {

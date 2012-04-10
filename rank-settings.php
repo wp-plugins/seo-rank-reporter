@@ -1,23 +1,32 @@
+<?php global $kw_update_email_notifications, $kw_delete_all_data; 
+
+
+//update_option('kw_seo_sengine_country', "http://www.google.com/"); 
+//$kw_sengine_url = kw_get_sengine_url();
+//print_r($kw_sengine_url);
+
+?>
+
 <div class="wrap">
-  <h2>SEO Rank Reporter Settings</h2>
+  <h2><?php _e('SEO Rank Reporter Settings'); ?></h2>
   <div class="postbox-container" style="width:65%;">
     <?php
  //Add/Remove Email Notification
 $updated_msg = "";
-if ($_POST['kw_seo_emails'] !== "" && $_POST['kw_em_spots'] !== "" && $_POST['update_notifications'] == "Update Email Notifications" && $_POST['notify_me'] == "yes") {
+if ($_POST['kw_seo_emails'] !== "" && $_POST['kw_em_spots'] !== "" && $_POST['update_notifications'] == $kw_update_email_notifications && $_POST['notify_me'] == "yes") {
 	
 	update_option('kw_seo_emails', $_POST['kw_seo_emails']);
 	update_option('kw_em_spots', $_POST['kw_em_spots']);
-	$updated_msg = "<div id='message' class='updated'>Email notification updated</div>";
+	$updated_msg = "<div id='message' class='updated'>".__('Email notification updated')."</div>";
 }
-if ($_POST['notify_me'] !== "yes" && $_POST['update_notifications'] == "Update Email Notifications") {
+if ($_POST['notify_me'] !== "yes" && $_POST['update_notifications'] == $kw_update_email_notifications) {
 	update_option('kw_seo_emails', '');
 	update_option('kw_em_spots', '');
-	$updated_msg = "<div id='message' class='updated'>Email notification updated</div>";
+	$updated_msg = "<div id='message' class='updated'>".__('Email notification updated')."</div>";
 }
-if ($_POST['table_delete'] == "Delete All Data") {
+if ($_POST['table_delete'] == $kw_delete_all_data && $_POST['delete_data_check'] == 'delete_approved') {
 	seoRankReporterDelete();
-	$updated_msg = "<div id='message' class='updated'>All data has been removed. If you wish to completely remove the table, you may now deactivate the plugin.</div>";
+	$updated_msg = "<div id='message' class='updated'>".__('All data has been removed. If you wish to completely remove the table, you may now deactivate the plugin.')."</div>";
 }
 ?>
     <?php 
@@ -37,166 +46,167 @@ if ($kw_em_spots !== "" && $kw_seo_emails !== "") {
     <div class="kw-update-message"> <?php echo $updated_msg; ?> </div>
     <script language="javascript">
 	function confirmRemove() {
-		return confirm("Do you really want to delete all your data? This action cannot be undone.")
+		return confirm("<?php _e('Do you really want to delete all your data? This action cannot be undone.'); ?>")
 	}  
 	
-	<?php $kw_seo_sengine_select = get_option('kw_seo_sengine_country'); ?> 
+	<?php $kw_seo_sengine_select = kw_get_sengine_url(); ?> 
 	
 	jQuery(document).ready( function() {
 		jQuery('option[value="<?php echo $kw_seo_sengine_select; ?>"]').attr('selected', true);	
 	});
 	  
 </script>
-    <h3>Google Country URL</h3>
+    <h3><?php _e('Google Country URL'); ?></h3>
     <table class="form-table">
       <tbody>
         <tr>
-          <th>Select which URL you'd like the Rank Reporter to use</th>
+          <th><?php _e('Select which URL you\'d like the Rank Reporter to use'); ?></th>
           <td><select name="se_country_url">
-              <option value="http://www.google.com/">Default - Google.com (http://www.google.com/)</option>
-              <option value="http://www.google.as/">American Samoa (http://www.google.as/)</option>
-              <option value="http://www.google.off.ai/">Anguilla (http://www.google.off.ai/)</option>
-              <option value="http://www.google.com.ag/">Antigua and Barbuda (http://www.google.com.ag/)</option>
-              <option value="http://www.google.com.ar/">Argentina (http://www.google.com.ar/)</option>
-              <option value="http://www.google.com.au/">Australia (http://www.google.com.au/)</option>
-              <option value="http://www.google.at/">Austria (http://www.google.at/)</option>
-              <option value="http://www.google.az/">Azerbaijan (http://www.google.az/)</option>
-              <option value="http://www.google.be/">Belgium (http://www.google.be/)</option>
-              <option value="http://www.google.com.br/">Brazil (http://www.google.com.br/)</option>
-              <option value="http://www.google.vg/">British Virgin Islands (http://www.google.vg/)</option>
-              <option value="http://www.google.bi/">Burundi (http://www.google.bi/)</option>
-              <option value="http://www.google.ca/">Canada (http://www.google.ca/)</option>
-              <option value="http://www.google.td/">Chad (http://www.google.td/)</option>
-              <option value="http://www.google.cl/">Chile (http://www.google.cl/)</option>
-              <option value="http://www.google.com.co/">Colombia (http://www.google.com.co/)</option>
-              <option value="http://www.google.co.cr/">Costa Rica (http://www.google.co.cr/)</option>
-              <option value="http://www.google.ci/">Côte d'Ivoire (http://www.google.ci/)</option>
-              <option value="http://www.google.com.cu/">Cuba (http://www.google.com.cu/)</option>
-              <option value="http://www.google.cd/">Dem. Rep. of the Congo (http://www.google.cd/)</option>
-              <option value="http://www.google.dk/">Denmark (http://www.google.dk/)</option>
-              <option value="http://www.google.dj/">Djibouti (http://www.google.dj/)</option>
-              <option value="http://www.google.com.do/">Dominican Republic (http://www.google.com.do/)</option>
-              <option value="http://www.google.com.ec/">Ecuador (http://www.google.com.ec/)</option>
-              <option value="http://www.google.com.sv/">El Salvador (http://www.google.com.sv/)</option>
-              <option value="http://www.google.fm/">Federated States of Micronesia (http://www.google.fm/)</option>
-              <option value="http://www.google.com.fj/">Fiji (http://www.google.com.fj/)</option>
-              <option value="http://www.google.fi/">Finland (http://www.google.fi/)</option>
-              <option value="http://www.google.fr/">France (http://www.google.fr/)</option>
-              <option value="http://www.google.gm/">The Gambia (http://www.google.gm/)</option>
-              <option value="http://www.google.ge/">Georgia (http://www.google.ge/)</option>
-              <option value="http://www.google.de/">Germany (http://www.google.de/)</option>
-              <option value="http://www.google.com.gi/">Gibraltar (http://www.google.com.gi/)</option>
-              <option value="http://www.google.com.gr/">Greece (http://www.google.com.gr/)</option>
-              <option value="http://www.google.gl/">Greenland (http://www.google.gl/)</option>
-              <option value="http://www.google.gg/">Guernsey (http://www.google.gg/)</option>
-              <option value="http://www.google.hn/">Honduras (http://www.google.hn/)</option>
-              <option value="http://www.google.com.hk/">Hong Kong (http://www.google.com.hk/)</option>
-              <option value="http://www.google.co.hu/">Hungary (http://www.google.co.hu/)</option>
-              <option value="http://www.google.co.in/">India (http://www.google.co.in/)</option>
-              <option value="http://www.google.ie/">Ireland (http://www.google.ie/)</option>
-              <option value="http://www.google.co.im/">Isle of Man (http://www.google.co.im/)</option>
-              <option value="http://www.google.co.il/">Israel (http://www.google.co.il/)</option>
-              <option value="http://www.google.it/">Italy (http://www.google.it/)</option>
-              <option value="http://www.google.com.jm/">Jamaica (http://www.google.com.jm/)</option>
-              <option value="http://www.google.co.jp/">Japan (http://www.google.co.jp/)</option>
-              <option value="http://www.google.co.je/">Jersey (http://www.google.co.je/)</option>
-              <option value="http://www.google.kz/">Kazakhstan (http://www.google.kz/)</option>
-              <option value="http://www.google.co.kr/">Korea (http://www.google.co.kr/)</option>
-              <option value="http://www.google.lv/">Latvia (http://www.google.lv/)</option>
-              <option value="http://www.google.co.ls/">Lesotho (http://www.google.co.ls/)</option>
-              <option value="http://www.google.li/">Liechtenstein (http://www.google.li/)</option>
-              <option value="http://www.google.lt/">Lithuania (http://www.google.lt/)</option>
-              <option value="http://www.google.lu/">Luxembourg (http://www.google.lu/)</option>
-              <option value="http://www.google.mw/">Malawi (http://www.google.mw/)</option>
-              <option value="http://www.google.com.my/">Malaysia (http://www.google.com.my/)</option>
-              <option value="http://www.google.com.mt/">Malta (http://www.google.com.mt/)</option>
-              <option value="http://www.google.mu/">Mauritius (http://www.google.mu/)</option>
-              <option value="http://www.google.com.mx/">México (http://www.google.com.mx/)</option>
-              <option value="http://www.google.ms/">Montserrat (http://www.google.ms/)</option>
-              <option value="http://www.google.com.na/">Namibia (http://www.google.com.na/)</option>
-              <option value="http://www.google.com.np/">Nepal (http://www.google.com.np/)</option>
-              <option value="http://www.google.nl/">Netherlands (http://www.google.nl/)</option>
-              <option value="http://www.google.co.nz/">New Zealand (http://www.google.co.nz/)</option>
-              <option value="http://www.google.com.ni/">Nicaragua (http://www.google.com.ni/)</option>
-              <option value="http://www.google.com.nf/">Norfolk Island (http://www.google.com.nf/)</option>
-              <option value="http://www.google.com.pk/">Pakistan (http://www.google.com.pk/)</option>
-              <option value="http://www.google.com.pa/">Panamá (http://www.google.com.pa/)</option>
-              <option value="http://www.google.com.py/">Paraguay (http://www.google.com.py/)</option>
-              <option value="http://www.google.com.pe/">Perú (http://www.google.com.pe/)</option>
-              <option value="http://www.google.com.ph/">Philippines (http://www.google.com.ph/)</option>
-              <option value="http://www.google.pn/">Pitcairn Islands (http://www.google.pn/)</option>
-              <option value="http://www.google.pl/">Poland (http://www.google.pl/)</option>
-              <option value="http://www.google.pt/">Portugal (http://www.google.pt/)</option>
-              <option value="http://www.google.com.pr/">Puerto Rico (http://www.google.com.pr/)</option>
-              <option value="http://www.google.cg/">Rep. of the Congo (http://www.google.cg/)</option>
-              <option value="http://www.google.ro/">Romania (http://www.google.ro/)</option>
-              <option value="http://www.google.ru/">Russia (http://www.google.ru/)</option>
-              <option value="http://www.google.rw/">Rwanda (http://www.google.rw/)</option>
-              <option value="http://www.google.sh/">Saint Helena (http://www.google.sh/)</option>
-              <option value="http://www.google.sm/">San Marino (http://www.google.sm/)</option>
-              <option value="http://www.google.com.sg/">Singapore (http://www.google.com.sg/)</option>
-              <option value="http://www.google.sk/">Slovakia (http://www.google.sk/)</option>
-              <option value="http://www.google.co.za/">South Africa (http://www.google.co.za/)</option>
-              <option value="http://www.google.es/">Spain (http://www.google.es/)</option>
-              <option value="http://www.google.se/">Sweden (http://www.google.se/)</option>
-              <option value="http://www.google.ch/">Switzerland (http://www.google.ch/)</option>
-              <option value="http://www.google.com.tw/">Taiwan (http://www.google.com.tw/)</option>
-              <option value="http://www.google.co.th/">Thailand (http://www.google.co.th/)</option>
-              <option value="http://www.google.tt/">Trinidad and Tobago (http://www.google.tt/)</option>
-              <option value="http://www.google.com.tr/">Turkey (http://www.google.com.tr/)</option>
-              <option value="http://www.google.com.ua/">Ukraine (http://www.google.com.ua/)</option>
-              <option value="http://www.google.ae/">United Arab Emirates (http://www.google.ae/)</option>
-              <option value="http://www.google.co.uk/">United Kingdom (http://www.google.co.uk/)</option>
-              <option value="http://www.google.com.uy/">Uruguay (http://www.google.com.uy/)</option>
-              <option value="http://www.google.uz/">Uzbekistan (http://www.google.uz/)</option>
-              <option value="http://www.google.vu/">Vanuatu (http://www.google.vu/)</option>
-              <option value="http://www.google.co.ve/">Venezuela (http://www.google.co.ve/)</option>
+              <option value="http://www.google.com/"><?php _e('Default'); ?> - Google.com (http://www.google.com/)</option>
+              <option value="http://www.google.as/"><?php _e('American Samoa'); ?> (http://www.google.as/)</option>
+              <option value="http://www.google.off.ai/"><?php _e('Anguilla'); ?> (http://www.google.off.ai/)</option>
+              <option value="http://www.google.com.ag/"><?php _e('Antigua and Barbuda'); ?> (http://www.google.com.ag/)</option>
+              <option value="http://www.google.com.ar/"><?php _e('Argentina'); ?> (http://www.google.com.ar/)</option>
+              <option value="http://www.google.com.au/"><?php _e('Australia'); ?> (http://www.google.com.au/)</option>
+              <option value="http://www.google.at/"><?php _e('Austria'); ?> (http://www.google.at/)</option>
+              <option value="http://www.google.az/"><?php _e('Azerbaijan'); ?> (http://www.google.az/)</option>
+              <option value="http://www.google.be/"><?php _e('Belgium'); ?> (http://www.google.be/)</option>
+              <option value="http://www.google.com.br/"><?php _e('Brazil'); ?> (http://www.google.com.br/)</option>
+              <option value="http://www.google.vg/"><?php _e('British Virgin Islands'); ?> (http://www.google.vg/)</option>
+              <option value="http://www.google.bi/"><?php _e('Burundi'); ?> (http://www.google.bi/)</option>
+              <option value="http://www.google.ca/"><?php _e('Canada'); ?> (http://www.google.ca/)</option>
+              <option value="http://www.google.td/"><?php _e('Chad'); ?> (http://www.google.td/)</option>
+              <option value="http://www.google.cl/"><?php _e('Chile'); ?> (http://www.google.cl/)</option>
+              <option value="http://www.google.com.co/"><?php _e('Colombia'); ?> (http://www.google.com.co/)</option>
+              <option value="http://www.google.co.cr/"><?php _e('Costa Rica'); ?> (http://www.google.co.cr/)</option>
+              <option value="http://www.google.ci/"><?php _e('Côte d\'Ivoire'); ?> (http://www.google.ci/)</option>
+              <option value="http://www.google.com.cu/"><?php _e('Cuba'); ?> (http://www.google.com.cu/)</option>
+              <option value="http://www.google.cd/"><?php _e('Dem. Rep. of the Congo'); ?> (http://www.google.cd/)</option>
+              <option value="http://www.google.dk/"><?php _e('Denmark'); ?> (http://www.google.dk/)</option>
+              <option value="http://www.google.dj/"><?php _e('Djibouti'); ?> (http://www.google.dj/)</option>
+              <option value="http://www.google.com.do/"><?php _e('Dominican Republic'); ?> (http://www.google.com.do/)</option>
+              <option value="http://www.google.com.ec/"><?php _e('Ecuador'); ?> (http://www.google.com.ec/)</option>
+              <option value="http://www.google.com.sv/"><?php _e('El Salvador'); ?> (http://www.google.com.sv/)</option>
+              <option value="http://www.google.fm/"><?php _e('Federated States of Micronesia'); ?> (http://www.google.fm/)</option>
+              <option value="http://www.google.com.fj/"><?php _e('Fiji'); ?> (http://www.google.com.fj/)</option>
+              <option value="http://www.google.fi/"><?php _e('Finland'); ?> (http://www.google.fi/)</option>
+              <option value="http://www.google.fr/"><?php _e('France'); ?> (http://www.google.fr/)</option>
+              <option value="http://www.google.gm/"><?php _e('The Gambia'); ?> (http://www.google.gm/)</option>
+              <option value="http://www.google.ge/"><?php _e('Georgia'); ?> (http://www.google.ge/)</option>
+              <option value="http://www.google.de/"><?php _e('Germany'); ?> (http://www.google.de/)</option>
+              <option value="http://www.google.com.gi/"><?php _e('Gibraltar'); ?> (http://www.google.com.gi/)</option>
+              <option value="http://www.google.com.gr/"><?php _e('Greece'); ?> (http://www.google.com.gr/)</option>
+              <option value="http://www.google.gl/"><?php _e('Greenland'); ?> (http://www.google.gl/)</option>
+              <option value="http://www.google.gg/"><?php _e('Guernsey'); ?> (http://www.google.gg/)</option>
+              <option value="http://www.google.hn/"><?php _e('Honduras'); ?> (http://www.google.hn/)</option>
+              <option value="http://www.google.com.hk/"><?php _e('Hong Kong'); ?> (http://www.google.com.hk/)</option>
+              <option value="http://www.google.co.hu/"><?php _e('Hungary'); ?> (http://www.google.co.hu/)</option>
+              <option value="http://www.google.co.in/"><?php _e('India'); ?> (http://www.google.co.in/)</option>
+              <option value="http://www.google.ie/"><?php _e('Ireland'); ?> (http://www.google.ie/)</option>
+              <option value="http://www.google.co.im/"><?php _e('Isle of Man'); ?> (http://www.google.co.im/)</option>
+              <option value="http://www.google.co.il/"><?php _e('Israel'); ?> (http://www.google.co.il/)</option>
+              <option value="http://www.google.it/"><?php _e('Italy'); ?> (http://www.google.it/)</option>
+              <option value="http://www.google.com.jm/"><?php _e('Jamaica'); ?> (http://www.google.com.jm/)</option>
+              <option value="http://www.google.co.jp/"><?php _e('Japan'); ?> (http://www.google.co.jp/)</option>
+              <option value="http://www.google.co.je/"><?php _e('Jersey'); ?> (http://www.google.co.je/)</option>
+              <option value="http://www.google.kz/"><?php _e('Kazakhstan'); ?> (http://www.google.kz/)</option>
+              <option value="http://www.google.co.kr/"><?php _e('Korea'); ?> (http://www.google.co.kr/)</option>
+              <option value="http://www.google.lv/"><?php _e('Latvia'); ?> (http://www.google.lv/)</option>
+              <option value="http://www.google.co.ls/"><?php _e('Lesotho'); ?> (http://www.google.co.ls/)</option>
+              <option value="http://www.google.li/"><?php _e('Liechtenstein'); ?> (http://www.google.li/)</option>
+              <option value="http://www.google.lt/"><?php _e('Lithuania'); ?> (http://www.google.lt/)</option>
+              <option value="http://www.google.lu/"><?php _e('Luxembourg'); ?> (http://www.google.lu/)</option>
+              <option value="http://www.google.mw/"><?php _e('Malawi'); ?> (http://www.google.mw/)</option>
+              <option value="http://www.google.com.my/"><?php _e('Malaysia'); ?> (http://www.google.com.my/)</option>
+              <option value="http://www.google.com.mt/"><?php _e('Malta'); ?> (http://www.google.com.mt/)</option>
+              <option value="http://www.google.mu/"><?php _e('Mauritius'); ?> (http://www.google.mu/)</option>
+              <option value="http://www.google.com.mx/"><?php _e('México'); ?> (http://www.google.com.mx/)</option>
+              <option value="http://www.google.ms/"><?php _e('Montserrat'); ?> (http://www.google.ms/)</option>
+              <option value="http://www.google.com.na/"><?php _e('Namibia'); ?> (http://www.google.com.na/)</option>
+              <option value="http://www.google.com.np/"><?php _e('Nepal'); ?> (http://www.google.com.np/)</option>
+              <option value="http://www.google.nl/"><?php _e('Netherlands'); ?> (http://www.google.nl/)</option>
+              <option value="http://www.google.co.nz/"><?php _e('New Zealand'); ?> (http://www.google.co.nz/)</option>
+              <option value="http://www.google.com.ni/"><?php _e('Nicaragua'); ?> (http://www.google.com.ni/)</option>
+              <option value="http://www.google.com.nf/"><?php _e('Norfolk Island'); ?> (http://www.google.com.nf/)</option>
+              <option value="http://www.google.com.pk/"><?php _e('Pakistan'); ?> (http://www.google.com.pk/)</option>
+              <option value="http://www.google.com.pa/"><?php _e('Panamá'); ?> (http://www.google.com.pa/)</option>
+              <option value="http://www.google.com.py/"><?php _e('Paraguay'); ?> (http://www.google.com.py/)</option>
+              <option value="http://www.google.com.pe/"><?php _e('Perú'); ?> (http://www.google.com.pe/)</option>
+              <option value="http://www.google.com.ph/"><?php _e('Philippines'); ?> (http://www.google.com.ph/)</option>
+              <option value="http://www.google.pn/"><?php _e('Pitcairn Islands'); ?> (http://www.google.pn/)</option>
+              <option value="http://www.google.pl/"><?php _e('Poland'); ?> (http://www.google.pl/)</option>
+              <option value="http://www.google.pt/"><?php _e('Portugal'); ?> (http://www.google.pt/)</option>
+              <option value="http://www.google.com.pr/"><?php _e('Puerto Rico'); ?> (http://www.google.com.pr/)</option>
+              <option value="http://www.google.cg/"><?php _e('Rep. of the Congo'); ?> (http://www.google.cg/)</option>
+              <option value="http://www.google.ro/"><?php _e('Romania'); ?> (http://www.google.ro/)</option>
+              <option value="http://www.google.ru/"><?php _e('Russia'); ?> (http://www.google.ru/)</option>
+              <option value="http://www.google.rw/"><?php _e('Rwanda'); ?> (http://www.google.rw/)</option>
+              <option value="http://www.google.sh/"><?php _e('Saint Helena'); ?> (http://www.google.sh/)</option>
+              <option value="http://www.google.sm/"><?php _e('San Marino'); ?> (http://www.google.sm/)</option>
+              <option value="http://www.google.com.sg/"><?php _e('Singapore'); ?> (http://www.google.com.sg/)</option>
+              <option value="http://www.google.sk/"><?php _e('Slovakia'); ?> (http://www.google.sk/)</option>
+              <option value="http://www.google.co.za/"><?php _e('South Africa'); ?> (http://www.google.co.za/)</option>
+              <option value="http://www.google.es/"><?php _e('Spain'); ?> (http://www.google.es/)</option>
+              <option value="http://www.google.se/"><?php _e('Sweden'); ?> (http://www.google.se/)</option>
+              <option value="http://www.google.ch/"><?php _e('Switzerland'); ?> (http://www.google.ch/)</option>
+              <option value="http://www.google.com.tw/"><?php _e('Taiwan'); ?> (http://www.google.com.tw/)</option>
+              <option value="http://www.google.co.th/"><?php _e('Thailand'); ?> (http://www.google.co.th/)</option>
+              <option value="http://www.google.tt/"><?php _e('Trinidad and Tobago'); ?> (http://www.google.tt/)</option>
+              <option value="http://www.google.com.tr/"><?php _e('Turkey'); ?> (http://www.google.com.tr/)</option>
+              <option value="http://www.google.com.ua/"><?php _e('Ukraine'); ?> (http://www.google.com.ua/)</option>
+              <option value="http://www.google.ae/"><?php _e('United Arab Emirates'); ?> (http://www.google.ae/)</option>
+              <option value="http://www.google.co.uk/"><?php _e('United Kingdom'); ?> (http://www.google.co.uk/)</option>
+              <option value="http://www.google.com.uy/"><?php _e('Uruguay'); ?> (http://www.google.com.uy/)</option>
+              <option value="http://www.google.uz/"><?php _e('Uzbekistan'); ?> (http://www.google.uz/)</option>
+              <option value="http://www.google.vu/"><?php _e('Vanuatu'); ?> (http://www.google.vu/)</option>
+              <option value="http://www.google.co.ve/"><?php _e('Venezuela'); ?> (http://www.google.co.ve/)</option>
             </select>
             <div class="option_saved"></div></td>
         </tr>
       </tbody>
     </table>
     <br />
-    <h3>Email Notifications</h3>
+    <h3><?php _e('Email Notifications'); ?></h3>
     <form action="" method="post">
       <table class="form-table" style="padding:30px;background:#ffffff;">
         <thead>
           <tr>
             <th colspan="2"><input type="checkbox" name="notify_me" value="yes"<?php echo $notify_checkbox; ?> onClick="document.getElementById('notify_details').style.display = this.checked ? 'block' : 'none';document.getElementById('update_notifications').style.border = '2px solid red'" id="notify_me" />
-              <label for="notify_me"><strong>Check this box to turn on email notifications</strong></label></th>
+              <label for="notify_me"><strong><?php _e('Check this box to turn on email notifications'); ?></strong></label></th>
           </tr>
         </thead>
         <tbody id="notify_details" <?php echo $notify_details_visibility; ?>>
           <tr>
-            <th scope="row"><label for="kw_seo_emails">Email Recipient(s):<br />
-                (separate by comma)</label></th>
+            <th scope="row"><label for="kw_seo_emails"><?php _e('Email Recipient(s)'); ?>:<br />
+                <?php _e('(separate by comma)'); ?></label></th>
             <td><input type="text" name="kw_seo_emails" id="kw_seo_emails" value="<?php echo $notify_emails; ?>" class="regular-text" onClick="document.getElementById('update_notifications').style.border = '2px solid red'" /></td>
           </tr>
           <tr>
-            <th scope="row" colspan="2"><label for="kw_em_spots">Notify me when a keyword changes rank</label>
-              <input type="text" name="kw_em_spots" id="kw_em_spots" value="<?php echo $notify_spots; ?>" style="width:40px;" onClick="document.getElementById('update_notifications').style.border = '2px solid red'" />
-              positions (up or down)</th>
+            <th scope="row" colspan="2"><label for="kw_em_spots"><?php printf(__('Notify me when a keyword changes rank %1$s positions (up or down)'), '</label>
+              <input type="text" name="kw_em_spots" id="kw_em_spots" value="'. $notify_spots.'" style="width:40px;" onClick="document.getElementById(\'update_notifications\').style.border = \'2px solid red\'" />'); ?>
+              </th>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="2"><input type="submit" value="Update Email Notifications" class="button" name="update_notifications" id="update_notifications" /></td>
+            <td colspan="2"><input type="submit" value="<?php echo $kw_update_email_notifications; ?>" class="button" name="update_notifications" id="update_notifications" /></td>
           </tr>
         </tfoot>
       </table>
     </form>
     <br />
-    <h3>Remove Ranking Data</h3>
+    <h3><?php _e('Remove Ranking Data'); ?></h3>
     <form action="" method="post">
       <table class="form-table">
         <tbody>
           <tr>
-            <th colspan="2"> <p>To avoid accidentally losing your data, the SEO Rank Reporter plugin will not delete your data when it is deactivated or upgraded. Clicking the delete button below will remove all data collected (this action cannot be undone). Only use this button if you wish to completely remove the plugin and all its corresponding data from Wordpress.</p>
+            <th colspan="2"> <p><?php _e('To avoid accidentally losing your data, the SEO Rank Reporter plugin will not delete your data when it is deactivated or upgraded. Clicking the delete button below will remove all data collected (this action cannot be undone). Only use this button if you wish to completely remove the plugin and all its corresponding data from Wordpress.'); ?></p>
             </th>
           </tr>
           <tr>
-            <th>Remove keywords and all ranking data</th>
-            <td><input type="submit" class="button" value="Delete All Data" name="table_delete" onclick='return confirmRemove()' /></td>
+            <th><?php _e('Remove keywords and all ranking data'); ?></th>
+            <td><input type="hidden" name="delete_data_check" value="delete_approved" />
+            <input type="submit" class="button" value="<?php echo $kw_delete_all_data; ?>" name="table_delete" onclick='return confirmRemove()' /></td>
           </tr>
         </tbody>
       </table> 
@@ -208,12 +218,12 @@ if ($kw_em_spots !== "" && $kw_seo_emails !== "") {
         <div id="toc" class="postbox">
           <div class="handlediv" title="Click to toggle"><br />
           </div>
-          <h3 class="hndle"><span>Try other Rank Tracking Tools</span></h3>
+          <h3 class="hndle"><span><?php _e('Try other Rank Tracking Tools'); ?></span></h3>
           <div class="inside">
-            <p>Use these other sources to watch your site rankings:</p>
+            <p><?php _e('Use these other sources to watch your site rankings:'); ?></p>
             <ul>
-              <li><a href="http://authoritylabs.com/?src=reporter-wp-plugin-settings" target="_blank">AuthorityLabs - 10 keywords free</a></li>
-              <li><a href="http://go.seomoz.org/aff_c?offer_id=1&aff_id=1660&aff_sub=wp-rank-settings&url=http%3A//www.seomoz.org/rank-tracker" target="_blank">SEOMoz's Rank Tracker - The Best SEO Software</a></li>
+              <li><a href="http://authoritylabs.com/?src=reporter-wp-plugin-settings" target="_blank"><?php _ex('AuthorityLabs - 10 keywords free', "AuthorityLabs is a company name"); ?></a></li>
+              <li><a href="http://go.seomoz.org/aff_c?offer_id=1&aff_id=1660&aff_sub=wp-rank-settings&url=http%3A//www.seomoz.org/rank-tracker" target="_blank"><?php _ex('SEOMoz\'s Rank Tracker - The Best SEO Software', "SEOMoz is a company name"); ?></a></li>
             </ul><br />
           </div>
         </div>
@@ -226,14 +236,18 @@ if ($kw_em_spots !== "" && $kw_seo_emails !== "") {
         <div id="toc" class="postbox" style="border:2px solid #009933;">
           <div class="handlediv" title="Click to toggle"><br />
           </div>
-          <h3 class="hndle"><span>Like this Plugin?</span></h3>
+          <h3 class="hndle"><span><?php _e('Like this Plugin?'); ?></span></h3>
           <div class="inside">
-            <p>Show your love by doing something below:</p>
+            <p><?php _e('Show your love by doing something below:'); ?></p>
             <ul>
-              <li><a href="http://wordpress.org/extend/plugins/seo-rank-reporter/" target="_blank">Rate it on Wordpress.org</a></li>
-              <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZ82CCVP65RNN" target="_blank">Donate!</a></li>
-              <li><a href="http://wordpress.org/extend/plugins/seo-rank-reporter/" target="_blank">Say that it works</a></li>
-            </ul><br />
+              <li><a href="http://wordpress.org/extend/plugins/seo-rank-reporter/" target="_blank"><?php _e('Rate it on Wordpress.org'); ?></a></li>
+              <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZ82CCVP65RNN" target="_blank"><?php _e('Donate!'); ?></a></li>
+              <li><a href="http://wordpress.org/extend/plugins/seo-rank-reporter/" target="_blank"><?php _e('Vote that this version works'); ?></a></li>
+            </ul>
+            <p><?php _e('Are you a native speaker of another language?'); ?></p>
+            <ul>
+              <li><a href="http://www.kwista.com/contact-us/" target="_blank"><?php _e('Contact me about translating this plugin'); ?></a></li>
+            </ul>
           </div>
         </div>
       </div>

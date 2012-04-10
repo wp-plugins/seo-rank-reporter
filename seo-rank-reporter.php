@@ -4,7 +4,7 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.1.5
+Version: 2.1.6
 Author URI: http://www.kwista.com
 */
 register_activation_hook(__FILE__,'seoRankReporterInstall');
@@ -35,8 +35,36 @@ function kw_seo_rank_menu(){
 	add_action( 'admin_footer-'. $kw_seo_rank_main, 'kw_seo_admin_footer' );
 
 }
+	$kw_i18n_to = _x('to', 'between two dates - eg March 6 to April 5');
+	$kw_i18n_plugin_name = __('SEO Rank Reporter');
+	$kw_add_to_reporter = _x('Add to Reporter', '"Reporter" is Proper Noun');
+	$kw_confirm_add_to_reporter = _x('Confirm and Add to Reporter', '"Reporter" is Proper Noun');
+	$kw_check_rankings_now = __('Check Rankings Now');
+	$kw_not_yet_checked = __('Not yet checked');
+	$kw_not_in_top = __('Not in top 100');
+	$kw_click_to_sort = __('Click to Sort');
+	$kw_opens_new_window = __('Opens New Window');
+	$kw_i18n_remove = __('Remove');
+	$kw_download_csv = _x('Download CSV', 'CSV is excel filetype - means "comma-separated"');
+	$kw_i18n_rank = __('Rank');
+	$kw_th_graph = __('Graph');
+	$kw_th_keywords = __('Keywords');
+	$kw_i18n_keyword = __('Keyword'); 
+	$kw_th_url = __('URL'); 
+	$kw_th_current_rank = __('Current Rank');
+	$kw_th_rank_change = __('Rank Change');
+	$kw_th_start_rank = __('Start Rank');
+	$kw_th_visits = __('Visits');
+	$kw_th_start_date = __('Start Date');
+	//Settings Specific
+	$kw_update_email_notifications = __('Update Email Notifications');
+	$kw_delete_all_data = __('Delete All Data');
+	
 
-
+function kw_top_right_affiliate() {
+	echo "<div style='float:right;font-size:11px;padding-right:20px;margin-top:-10px;text-align:right;'><strong>".__('Get keyword rankings checked daily')."</strong> <br />
+<a href='http://authoritylabs.com/?src=reporter-wp-plugin' target='_blank'>". sprintf(__('Try Authority Labs%1$s - 10 Keywords Free'), '</a>')."</div>";
+}
 
 //Make wp-cron run on a weekly schedule
 function kw_seo_my_add_weekly( $schedules ) {
@@ -122,11 +150,34 @@ function kw_seo_ajax_sengineUrl() {
 	
 	if (!empty($_POST['sengineUrl'])) {
 		global $wpdb; // this is how you get access to the database
+		$old_sengineUrl = get_option('kw_seo_sengine_country');
 		$sengineUrlResponse = $_POST['sengineUrl'];
-		update_option('kw_seo_sengine_country', $sengineUrlResponse);
-		echo '<div id="message" class="updated" style="display:none">Country URL Updated. The Rank Reporter will now use <strong>'.$sengineUrlResponse.'</strong> when searching for rankings.<br><span style="color:red">Warning: Any data collected up to this point will still reflect the old Google URL.</div>';
-		die(); // this is required to return a proper result
+		//Need to work on this
+		
+		if ($old_sengineUrl !== $sengineUrlResponse) {
+			if(!is_array($old_sengineUrl)) { $old_sengineUrl = array(array($old_sengineUrl, "")); }
+			
+			array_push($old_sengineUrl, array($sengineUrlResponse, sprintf('%f', (time())*1000)) );
+			update_option('kw_seo_sengine_country', $old_sengineUrl);
+	
+			//echo '<div id="message" class="updated" style="display:none">Country URL Updated. The Rank Reporter will now use <strong>'.$sengineUrlResponse.'</strong> when searching for rankings.<br><span style="color:red">Warning: Any data collected up to this point will still reflect the old Google URL.</div>';
+			
+			printf(__('%1$sCountry URL Updated. The Rank Reporter will now use %2$s when searching for rankings.%3$sWarning: Any data collected up to this point will still reflect the old Google URL.%4$s'), '<div id="message" class="updated" style="display:none">', '<strong>'.$sengineUrlResponse.'</strong>', '<br><span style="color:red">', '</div>');
+
+			die(); // this is required to return a proper result
+		}
 	}
+}
+
+function kw_get_sengine_url() {
+	$kw_sengine_url = get_option('kw_seo_sengine_country');
+	if (!is_array($kw_sengine_url)) {
+		return $kw_sengine_url;
+	} else {
+		 $last_element = end($kw_sengine_url);
+		 return $last_element[0];
+	}
+	
 }
 
 function my_in_array($needle, $haystack) {        
@@ -138,7 +189,7 @@ function my_in_array($needle, $haystack) {
 }
 function kw_get_search_keyword() {
 
-	$kw_sengine_country = get_option('kw_seo_sengine_country');	
+	$kw_sengine_country = kw_get_sengine_url();	
 	
 	if (stristr($_SERVER['HTTP_REFERER'], $kw_sengine_country) !== false  && !is_user_logged_in()) {
 		$referrer = $_SERVER['HTTP_REFERER'];
@@ -304,18 +355,12 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 	$entered_url = htmlspecialchars_decode($entered_url, ENT_QUOTES);
 	$original_entered_url = $entered_url;
 	
-	$kw_sengine_country = get_option('kw_seo_sengine_country');	
+	$kw_sengine_country = kw_get_sengine_url();	
 	$kw_sengine_url = $kw_sengine_country.'search?q='.$target_keyword.'&num=100&pws=0';
 	
 	//Array of the most common user agents
 		$userAgent_array = array(
-			'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6) Gecko/20070725 Firefox/2.0',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.0; de; rv:1.9.0.15) Gecko/2009101601 Firefox 2.1 (.NET CLR 3.5.30729)',
-			'Mozilla/6.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:2.0.0.0) Gecko/20061028 Firefox/3.0',
-			'Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.0',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.1; pl; rv:1.9.1) Gecko/20090624 Firefox/3.5 (.NET CLR 3.5.30729)',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.1; ru; rv:1.9.2) Gecko/20100115 Firefox/3.6',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.1; pl; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3',
+						'Mozilla/5.0 (Windows; U; Windows NT 6.1; pl; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3',
 			'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)',
 			'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)',
 			'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
@@ -324,17 +369,10 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 			'(Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0))',
 			'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; en) Opera 8.0',
 			'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; en) Opera 8.50',
-			'Opera/9.00 (Windows NT 5.1; U; en)',
 			'Opera/9.20 (Windows NT 6.0; U; en)',
 			'Opera/9.30 (Nintendo Wii; U; ; 2047-7;en)',
 			'Opera 9.4 (Windows NT 6.1; U; en)',
 			'Opera/9.99 (Windows NT 5.1; U; pl) Presto/9.9.9',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/525.19 (KHTML, like Gecko) Chrome/1.0.154.42 Safari/525.19',
-			'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/528.8 (KHTML, like Gecko) Chrome/2.0.156.0 Safari/528.8',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/531.3 (KHTML, like Gecko) Chrome/3.0.193.0 Safari/531.3',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/4.0.202.0 Safari/532.0',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/4.0.202.0 Safari/532.0',
-			'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/532.9 (KHTML, like Gecko) Chrome/5.0.307.1 Safari/532.9',
 			'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/6.0',
 			'Mozilla/5.0 (Macintosh; U; Intel Mac OS X; de-de) AppleWebKit/522.11.1 (KHTML, like Gecko) Version/3.0.3 Safari/522.12.1',
 			'Mozilla/5.0 (Windows; U; Windows NT 5.1; fr-FR) AppleWebKit/523.15 (KHTML, like Gecko) Version/3.0 Safari/523.15',
@@ -342,7 +380,14 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 			'Mozilla/5.0 (Macintosh; U; PPC Mac OS X 10_5_2; en-gb) AppleWebKit/526+ (KHTML, like Gecko) Version/3.1 iPhone',
 			'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_5; en-us) AppleWebKit/525.25 (KHTML, like Gecko) Version/3.2 Safari/525.25',
 			'Mozilla/5.0 (Windows; U; Windows NT 6.0; ru-RU) AppleWebKit/528.16 (KHTML, like Gecko) Version/4.0 Safari/528.16',
-			'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_7; en-us) AppleWebKit/533.4 (KHTML, like Gecko) Version/4.1 Safari/533.4'
+			'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_7; en-us) AppleWebKit/533.4 (KHTML, like Gecko) Version/4.1 Safari/533.4',
+			'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:11.0) Gecko Firefox/11.0', 
+			'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US))',
+			'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.0.3705; .NET CLR 1.1.4322)',
+			'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; InfoPath.1; SV1; .NET CLR 3.8.36217; WOW64; en-US)',
+			'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.66 Safari/535.11',
+			'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.66 Safari/535.11',
+			'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24'
 		);
 		
 
@@ -438,6 +483,7 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 }
 
 function kw_cron_rank_checker() {
+	global $kw_not_in_top, $kw_th_current_rank, $kw_th_rank_change;
 	
 	if (seoRankReporterGetKeywurl() != "" ) {
 		$keywurl_array = seoRankReporterGetKeywurl();
@@ -469,12 +515,13 @@ function kw_cron_rank_checker() {
 					$rank_plus = '+';
 				}
 				
+				
 				$kw_rnk_change = $previous_rank-$current_rank;
 				if ($current_rank == 100) {
-					$current_rank = "Not in top 100";
+					$current_rank = $kw_not_in_top;
 				}
 				if ($previous_rank == 100) {
-					$previous_rank = "Not in top 100";
+					$previous_rank = $kw_not_in_top;
 				}
 				if (($kw_rnk_change >= $kw_em_spots) || ($kw_rnk_change*(-1) >= $kw_em_spots)) {
 					if ($kw_rnk_change < 0 ) {
@@ -482,7 +529,7 @@ function kw_cron_rank_checker() {
 					} else {
 						$email_msg .= '<tr><td>'.$kw_keyw.'</td><td>'.$kw_url.'</td><td>'.$current_rank.'</td><td>'.$previous_rank.'</td><td style="color:green;">'.$kw_rnk_change.' '.$rank_plus.'</td></tr>';
 					}
-					$plain_email_msg .= $kw_keyw." - ".$kw_url." \r\nCurrent Rank: ".$current_rank.",  Previous Rank: ".$previous_rank.",  Rank Change: ".$kw_rnk_change.$rank_plus. " \r\n \r\n";
+					$plain_email_msg .= $kw_keyw." - ".$kw_url." \r\n".$kw_th_current_rank.": " . $current_rank . ", ".__('Previous Rank').": " .$previous_rank.", ".$kw_th_rank_change.": ".$kw_rnk_change.$rank_plus. " \r\n \r\n";
 				}
 			}
 			
@@ -508,12 +555,26 @@ function kw_seoRankReporterSendEmail($email_msg, $plain_email_msg) {
 		$kw_seo_emails = get_option('kw_seo_emails');
 		
 		$kw_date_last = date("M-d-Y", get_option('kw_rank_nxt_date')-259200);
-		$email_msg = '<h2>Keyword Ranking Changes from ' . get_bloginfo("url") . '</h2><p><em>The following keywords have changed ranking positions on Google since the last rank check on <strong>' . $kw_date_last .'</strong>:</em></p><table cellpadding="7" cellspacing="0"><thead><tr bgcolor="#FFFF99"><th>Keyword</th><th>URL</th><th>Current Rank</th><th>Previous Rank</th><th>Rank Change</th></tr></thead>' . $email_msg . '</table><br><p style="font-size:10px;color:#999999"><a href="'. get_bloginfo("url") .'/wp-admin/admin.php?page=seo-rank-settings">Change email settings</a> - Rank notifications brought to you by SEO Rank Reporter - <a href="http://www.kwista.com">Kwista</a>.</p>';
-		$plain_email_msg = "Keyword Ranking Changes from ".get_bloginfo('url') . " \r\n \r\n". "The following keywords have changed ranking positions on Google since the last rank check on ".$kw_date_last . ". \r\n \r\n". $plain_email_msg . " \r\n \r\n Change email settings at ". get_bloginfo("url") ."/wp-admin/admin.php?page=seo-rank-settings \r\n \r\n Rank notifications brought to you by SEO Rank Reporter - http://wordpress.org/extend/plugins/seo-rank-reporter/";
+		//$email_msg = '<h2>Keyword Ranking Changes from ' . get_bloginfo("url") . '</h2><p><em>The following keywords have changed ranking positions on Google since the last rank check on <strong>' . $kw_date_last .'</strong>:</em></p><table cellpadding="7" cellspacing="0"><thead><tr bgcolor="#FFFF99"><th>Keyword</th><th>URL</th><th>Current Rank</th><th>Previous Rank</th><th>Rank Change</th></tr></thead>' . $email_msg . '</table><br><p style="font-size:10px;color:#999999"><a href="'. get_bloginfo("url") .'/wp-admin/admin.php?page=seo-rank-settings">Change email settings</a> - Rank notifications brought to you by SEO Rank Reporter - <a href="http://www.kwista.com">Kwista</a>.</p>';
+		
+		$email_msg = sprintf(__('%1$sKeyword Ranking Changes from %2$sThe following keywords have changed ranking positions on Google since the last rank check on %3$sKeyword%4$sURL%4$sCurrent Rank%4$sPrevious Rank%4$sRank Change%5$sChange email settings%6$sRank notifications brought to you by SEO Rank Reporter %7$s'), 
+		"<h2>", 
+		get_bloginfo('url')."</h2><p><em>", 
+		'<strong>' . $kw_date_last .'</strong>:</em></p><table cellpadding="7" cellspacing="0"><thead><tr bgcolor="#FFFF99"><th>', 
+		'</th><th>', 
+		'</th></tr></thead>' . $email_msg . '</table><br><p style="font-size:10px;color:#999999"><a href="'. get_bloginfo("url") .'/wp-admin/admin.php?page=seo-rank-settings">', 
+		'</a> - ', 
+		'- <a href="http://www.kwista.com">Kwista</a>.</p>');
+		
+		
+		//$plain_email_msg = "Keyword Ranking Changes from ".get_bloginfo('url') . " \r\n \r\n". "The following keywords have changed ranking positions on Google since the last rank check on ".$kw_date_last . ". \r\n \r\n". $plain_email_msg . " \r\n \r\n Change email settings at ". get_bloginfo("url") ."/wp-admin/admin.php?page=seo-rank-settings \r\n \r\n Rank notifications brought to you by SEO Rank Reporter - http://wordpress.org/extend/plugins/seo-rank-reporter/";
+		
+		$plain_email_msg = sprintf(__('Keyword Ranking Changes from %1$s The following keywords have changed ranking positions on Google since the last rank check on %2$s Change email settings at %3$s Rank notifications brought to you by SEO Rank Reporter %4$s'), get_bloginfo('url') . " \r\n \r\n", $kw_date_last . ". \r\n \r\n". $plain_email_msg . " \r\n \r\n", get_bloginfo("url") ."/wp-admin/admin.php?page=seo-rank-settings \r\n \r\n", "- http://wordpress.org/extend/plugins/seo-rank-reporter/");
+		
 		
 		$to = $kw_seo_emails;
-		$subject = "ALERT: Keyword Ranking Changes from " . str_replace('http://', '', get_bloginfo('url'));
-		$headers = "From: Rank Reporter | " . get_bloginfo('name') . " <" . get_bloginfo('admin_email') . "> \r\n";
+		$subject = __('ALERT: Keyword Ranking Changes from ') . str_replace('http://', '', get_bloginfo('url'));
+		$headers = __('From: Rank Reporter | ') . get_bloginfo('name') . " <" . get_bloginfo('admin_email') . "> \r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			
@@ -521,6 +582,7 @@ function kw_seoRankReporterSendEmail($email_msg, $plain_email_msg) {
 		} else { mail($to, $subject, $plain_email_msg); }
 }
 function kw_seoRankReporterAddKeywords($kw_keyword, $kw_url) {
+	global $kw_th_current_rank;
 	$kw_url = htmlspecialchars(stripslashes(trim($kw_url)), ENT_QUOTES);
 	$kw_keyw = htmlspecialchars(stripslashes(trim($kw_keyword)), ENT_QUOTES);
 		
@@ -561,19 +623,19 @@ function kw_seoRankReporterAddKeywords($kw_keyword, $kw_url) {
 			
 		seoRankReporterAddRow($checked_rank[0], $checked_rank[1], $checked_rank[2], $checked_rank[3], $checked_rank[4], $checked_rank[5], $theVisits);
 		
-		if ($checked_rank[4] == '-1') { $checked_rank[4] = "Not in top 100 Results"; } 
-		$success_msg .= "<li><strong>" . $checked_rank[0] . " - " . $checked_rank[1] . "</strong></li><li>Current Rank: " . $checked_rank[4] . "</li>";
+		if ($checked_rank[4] == '-1') { $checked_rank[4] = __('Not in top 100 Results'); } 
+		$success_msg .= "<li><strong>" . $checked_rank[0] . " - " . $checked_rank[1] . "</strong></li><li>".$kw_th_current_rank.": " . $checked_rank[4] . "</li>";
 					
 	}
 	
 	
 	if ($success_msg !== "") {
-		$success = "<div id='message' class='updated'>Keyword added to the Rank Reporter:<ul style='margin:10px 0 0 10px;'>".$success_msg."</ul></div>";
+		$success = "<div id='message' class='updated'>".__('Keyword added to the Rank Reporter').":<ul style='margin:10px 0 0 10px;'>".$success_msg."</ul></div>";
 	} else {
 		$success = "";
 	}
 	if ($error_msg !== "") { 
-		$error = "<div class='error'>Keyword already added to Rank Reporter:<ul style='margin-left:10px;'>" . $error_msg . "</ul></div>";
+		$error = "<div class='error'>".__('Keyword already added to Rank Reporter').":<ul style='margin-left:10px;'>" . $error_msg . "</ul></div>";
 	} else {
 		$error = "";
 	}
@@ -594,7 +656,7 @@ function kw_seoRankReporterRemoveKeyword($kw_remove_keyword, $kw_remove_url) {
 		update_option('kw_keyw_visits', $r_keyw_visits_array);
 	} 
 	
-	return "<div id='message' class='updated'>Keyword removed: <strong>$kw_remove_keyword - $kw_remove_url</strong></div>";
+	return "<div id='message' class='updated'>".__('Keyword removed').": <strong>$kw_remove_keyword - $kw_remove_url</strong></div>";
 	
 }
 function kw_isUrlInArray($keywurl_arra) {
@@ -627,7 +689,10 @@ function kw_seo_GetURL($the_url) {
     return $code;
 }
 
+
 if ($_POST['dnload-csv'] == "Download CSV") {
+	
+	global $kw_not_in_top;
 	if (seoRankReporterGetKeywurl() != "") {
 		header("Content-type: application/octet-stream");
 		header("Content-Disposition: attachment; filename=\"rank-reporter-data.csv\"");
@@ -660,7 +725,7 @@ if ($_POST['dnload-csv'] == "Download CSV") {
 					
 					if ($data[date] == $aDate[date]) {
 						if ($data[rank] == -1) {
-							$data[rank] = "Not in top 100";
+							$data[rank] = $kw_not_in_top;
 						}
 						$csv .= "," . $data[rank];
 						$blank = FALSE;
@@ -695,5 +760,5 @@ function kw_fix_g_url($url) {
 	}
 	return $url;
 }
-		$kw_sengine_country = get_option('kw_seo_sengine_country');	
+		$kw_sengine_country = kw_get_sengine_url();	
 ?>
