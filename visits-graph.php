@@ -79,7 +79,7 @@ foreach($keywurl_array as $keywurl) {
 		$start_rank = $results_array[0][rank];
 		$start_page = $results_array[0][page];
 		$old_date_array = explode("-", $results_array[0][date]);
-		$old_date = date('M', mktime(0, 0, 0, $old_date_array[1], $old_date_array[2], $old_date_array[0]) ).'-'.$old_date_array[2].'-'.$old_date_array[0];
+		$old_date = date('j M Y', mktime(0, 0, 0, $old_date_array[1], $old_date_array[2], $old_date_array[0]) );
 	}
 	if ($current_rank !== "<em>".$kw_not_yet_checked."</em>" && $start_rank !== "-1" && $current_rank !== "-1" ) {
 		$rank_change = $start_rank-$current_rank;
@@ -117,9 +117,9 @@ foreach($keywurl_array as $keywurl) {
 } }
 ?>
  <?php $datepicker_array = explode("-", $datepicker_min);
-  		$datepicker_min_edit = date('M j, Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0])); 
+  		$datepicker_min_edit = date('j M Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0])); 
 		$datepicker_array = explode("-", $datepicker_max);
-		$datepicker_max_edit = date('M j, Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0]));
+		$datepicker_max_edit = date('j M Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0]));
    ?>
  
   <script type="text/javascript">
@@ -132,7 +132,7 @@ $("#maxdatepicker").val('<?php echo $datepicker_max_edit; ?>');
 		minDate: '<?php echo $datepicker_min_edit; ?>',
 		maxDate: '<?php echo $datepicker_max_edit; ?>',
 		showAnim: 'slideDown',
-		dateFormat: 'M d, yy', 
+		dateFormat: 'd M yy', 
    		onSelect: function(dateText, inst) { 
 			plotAccordingToDate(dateText,daMax, currentPlaceHolder);
 			daMin = dateText;
@@ -142,7 +142,7 @@ $("#maxdatepicker").val('<?php echo $datepicker_max_edit; ?>');
 		minDate: '<?php echo $datepicker_min_edit; ?>',
 		maxDate: '<?php echo $datepicker_max_edit; ?>',
 		showAnim: 'slideDown',
-		dateFormat: 'M d, yy', 
+		dateFormat: 'd M yy', 
    		onSelect: function(dateText, inst) { 
 			plotAccordingToDate(daMin,dateText,currentPlaceHolder);
 			daMax = dateText;
@@ -187,7 +187,7 @@ foreach ($kw_graph_labels as $kw_keyw_g) {
 	 ?>
 <div class="myChangingDivs mcd<?php echo $i; ?>" id="d<?php echo $i; ?>" style="<?php if ($j > 0) { echo "visibility:hidden;"; } ?>">
  
-  <img src="../wp-content/plugins/seo-rank-reporter/images/graph-bg-rank.png" class="rankLabel" style="margin-top:90px;position:absolute;left:40px;z-index:999999" />
+  <img src="<?php echo plugins_url('images/graph-bg-rank.png', __FILE__); ?>" class="rankLabel" style="margin-top:90px;position:absolute;left:40px;z-index:999999" />
   <div id="placeholder<?php echo $i; ?>" style="width:95%;height:450px;margin-left:0px;" class="aPlaceholder"></div>
   
 </div>
@@ -271,8 +271,8 @@ foreach($keywurl_visits_array as $key_vis) { ?>
   </form>
   <table class="widefat">
     <tr>
-      <td style="border-bottom:none;"><?php $kw_date_next = date("M-d-Y", get_option('kw_rank_nxt_date'));
-$kw_date_last = date("M-d-Y", get_option('kw_rank_nxt_date')-259200);
+      <td style="border-bottom:none;"><?php $kw_date_next = date("j M Y", get_option('kw_rank_nxt_date'));
+$kw_date_last = date("j M Y", get_option('kw_rank_nxt_date')-259200);
 printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s'), "<strong>".$kw_date_last."</strong><br>", "<strong>".$kw_date_next."</strong>");
  ?></td>
       <td style="border-bottom:none"><?php printf(__('*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking outside the first 100 results%3$s *Visits are the number of page visits since the last rank check (every 3 days). Visits will be blank if the URL does not contain %4$s'), "<strong>", "</strong>", "<br />", "<strong>".get_bloginfo('url')."</strong>"); ?>
@@ -309,7 +309,7 @@ function negformat(val,axis){
 				   legend: { margin: 10, backgroundOpacity: .5, position: "sw" },
                	   grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#fff"] } },
 				   yaxis: { tickFormatter: negformat, max: "-1" }, 
-				   xaxis: { mode: "time",  timeformat: "%b-%d-%y", min: (new Date(dmin)).getTime(), max: (new Date(dmax)).getTime()}, 
+				   xaxis: { mode: "time",  timeformat: "%d %b %y", min: (new Date(dmin)).getTime(), max: (new Date(dmax)).getTime()}, 
 				   y2axis: { }, selection: { mode: "x" },
 			});
 		$("#placeholder"+currentDivId).bind("plothover", function (event, pos, item) {
@@ -355,7 +355,7 @@ function negformat(val,axis){
     });	
 	$('.aPlaceholder canvas:nth-child(2)').each(function() {
 		$(this).css( {
-			'backgroundImage': 'url(../wp-content/plugins/seo-rank-reporter/images/graph-bg-visits.png)',
+			'backgroundImage': 'url(<?php echo plugins_url('images/graph-bg-visits.png', __FILE__); ?>)',
 			'backgroundPosition': '97% center',
 			'backgroundRepeat': 'no-repeat'
 		});

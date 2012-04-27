@@ -4,8 +4,9 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.1.6
+Version: 2.1.7
 Author URI: http://www.kwista.com
+Text Domain: seo-rank-reporter
 */
 register_activation_hook(__FILE__,'seoRankReporterInstall');
 register_deactivation_hook (__FILE__, 'kwSeoPluginDeactivate');
@@ -14,6 +15,13 @@ add_action('start_cron_rank_checker', 'kw_cron_rank_checker');
 add_action('wp_head', 'kw_get_search_keyword');
 add_filter('cron_schedules', 'kw_seo_my_add_weekly');
 add_action('wp_ajax_kw_sengineUrl', 'kw_seo_ajax_sengineUrl');
+
+// L10N
+add_action( 'init', 'kw_seo_load_plugin_textdomain' );
+
+function kw_seo_load_plugin_textdomain() {
+	load_plugin_textdomain( 'seo-rank-reporter', false, 'seo-rank-reporter/languages' );
+}
 
 $kw_seoRankTable ="seoRankReporter";
 function kw_seo_rank_menu(){
@@ -90,17 +98,21 @@ function kw_seo_keywords_menu() {
 function kw_seo_visits_menu() {
 	require ('visits-graph.php');
 }
+
+
+
 function kw_seo_admin_header(){
   echo '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />';
-  echo '<link href="'.get_bloginfo('url').'/wp-content/plugins/seo-rank-reporter/style.css" rel="stylesheet" type="text/css" />';
-  echo '<!--[if IE]><script language="javascript" type="text/javascript" src="'.get_bloginfo('url').'/wp-content/plugins/seo-rank-reporter/jscript/excanvas.min.js"></script><![endif]-->';
-  echo '<script language="javascript" type="text/javascript" src="'.get_bloginfo('url').'/wp-content/plugins/seo-rank-reporter/jscript/jquery.js"></script>';
-  echo '<script language="javascript" type="text/javascript" src="'.get_bloginfo('url').'/wp-content/plugins/seo-rank-reporter/jscript/jquery.flot.js"></script>';
-  echo '<script language="javascript" type="text/javascript" src="'.get_bloginfo('url').'/wp-content/plugins/seo-rank-reporter/jscript/sorttable.js"></script>';
-  echo '<script language="javascript" type="text/javascript" src="'.get_bloginfo('url').'/wp-content/plugins/seo-rank-reporter/jscript/jquery-ui-1.8.13.custom.min.js"></script>';
-    echo '<script language="javascript" type="text/javascript" src="'.get_bloginfo('url').'/wp-content/plugins/seo-rank-reporter/jscript/jquery.ui.datepicker.js"></script>';
+  echo '<link href="'.plugins_url( 'style.css' , __FILE__ ).'" rel="stylesheet" type="text/css" />';
+  echo '<!--[if IE]><script language="javascript" type="text/javascript" src="'.plugins_url( 'jscript/excanvas.min.js' , __FILE__ ).'"></script><![endif]-->';
+  echo '<script language="javascript" type="text/javascript" src="'.plugins_url( 'jscript/jquery.js' , __FILE__ ).'"></script>';
+  echo '<script language="javascript" type="text/javascript" src="'.plugins_url( 'jscript/jquery.flot.js' , __FILE__ ).'"></script>';
+  echo '<script language="javascript" type="text/javascript" src="'.plugins_url( 'jscript/sorttable.js' , __FILE__ ).'"></script>';
+  echo '<script language="javascript" type="text/javascript" src="'.plugins_url( 'jscript/jquery-ui-1.8.13.custom.min.js' , __FILE__ ).'"></script>';
+  echo '<script language="javascript" type="text/javascript" src="'.plugins_url( 'jscript/jquery.ui.datepicker.js' , __FILE__ ).'"></script>';
 
 } 
+
 
 function kw_seo_admin_footer() {
 	echo '<script type="text/javascript" charset="utf-8">
@@ -133,7 +145,7 @@ function kw_seo_do_some_ajax() {
 				action: "kw_sengineUrl",
 				sengineUrl: searchUrl
 			};
-			jQuery(".kw-update-message").html("<img src=\'../wp-content/plugins/seo-rank-reporter/images/loading.gif\' />");
+			jQuery(".kw-update-message").html("<img src=\''.plugins_url( 'images/loading.gif', __FILE__).'\' />");
 			jQuery.post(ajaxurl, data, function(response) {
 				//alert(response);
 				jQuery(".kw-update-message").html(response);

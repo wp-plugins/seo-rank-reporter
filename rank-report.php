@@ -12,18 +12,18 @@ global $kw_add_to_reporter, $kw_confirm_add_to_reporter, $kw_check_rankings_now,
 if (isset($_POST['kw_remove_keyword'] ) ) {
 	$remove_msg = kw_seoRankReporterRemoveKeyword($_POST['kw_remove_keyword'], $_POST['kw_remove_url']);
 }
-if ($_POST['entry_url'] !== "" && $_POST['keyword_item']!== "" && ($_POST['submit_keyw'] == "Add to Reporter" ) || $_POST['submit_keyw'] == "Confirm and Add to Reporter")  {
+if ($_POST['entry_url'] !== "" && $_POST['keyword_item']!== "" && ($_POST['submit_keyw'] == $kw_add_to_reporter ) || $_POST['submit_keyw'] == $kw_confirm_add_to_reporter)  {
 	$return_msg = kw_seoRankReporterAddKeywords($_POST['keyword_item'], $_POST['entry_url']);
 }
 
-if ($_POST['check-rankings-now'] == "Check Rankings Now" && (date("d", get_option('kw_rank_nxt_date')-259200)) < date('d') ){
+if ($_POST['check-rankings-now'] == $kw_check_rankings_now && (date("d", get_option('kw_rank_nxt_date')-259200)) < date('d') ){
 	kw_cron_rank_checker();
 	$kw_check_now_button = '';
-} elseif ($_POST['check-rankings-now'] == "Check Rankings Now" && date("d", get_option('kw_rank_nxt_date')-259200) >= date('d')) {
+} elseif ($_POST['check-rankings-now'] == $kw_check_rankings_now && date("d", get_option('kw_rank_nxt_date')-259200) >= date('d')) {
 	$return_msg = "<div class='error'>".__('Rankings were not checked. Rankings can only be checked once per day.')."</div>"; 
 	$kw_check_now_button = '';
 } elseif (date("d", get_option('kw_rank_nxt_date')-259200) < date('d')) {
-	$kw_check_now_button = '<form method="post" action="" class="kw-check-now-form"><input type="submit" name="check-rankings-now" class="button-primary kw-check-now" value="Check Rankings Now" /></form>';
+	$kw_check_now_button = '<form method="post" action="" class="kw-check-now-form"><input type="submit" name="check-rankings-now" class="button-primary kw-check-now" value="'.$kw_check_rankings_now.'" /></form>';
 }
 
 ?>
@@ -66,8 +66,7 @@ kw_top_right_affiliate();
 ?>
 
 <div style="height:30px;">
-			<input type="text" id="mindatepicker" class="fav-first" value="" />
-           <?php echo $kw_i18n_to; ?> <input type="text" id="maxdatepicker" class="fav-first" value="" />
+			<?php printf(__('Graph from %1$s to %2$s'), '<input type="text" id="mindatepicker" class="fav-first" value="" />', '<input type="text" id="maxdatepicker" class="fav-first" value="" />'); ?>
 			<?php echo $kw_check_now_button; ?>	
 </div>
 <div id="placeholder" style="width:95%;height:400px;margin-left:10px;"></div><br />
@@ -163,7 +162,7 @@ foreach($keywurl_array as $keywurl) {
 		$start_rank = $results_array[0][rank];
 		$start_page = $results_array[0][page];
 		$old_date_array = explode("-", $results_array[0][date]);
-		$old_date = date('M', mktime(0, 0, 0, $old_date_array[1], $old_date_array[2], $old_date_array[0]) ).'-'.$old_date_array[2].'-'.$old_date_array[0];
+		$old_date = date('j M Y', mktime(0, 0, 0, $old_date_array[1], $old_date_array[2], $old_date_array[0]) );
 	}
 	if ($current_rank !== "<em>".$kw_not_yet_checked."</em>" && $start_rank !== "-1" && $current_rank !== "-1" ) {
 		$choices = "choices".$p;
@@ -239,8 +238,8 @@ foreach($keywurl_array as $keywurl) {
   </table>
   <table class="widefat">
     <tr>
-      <td style="border-bottom:none;"><?php $kw_date_next = date("M-d-Y", get_option('kw_rank_nxt_date'));
-$kw_date_last = date("M-d-Y", get_option('kw_rank_nxt_date')-259200);
+      <td style="border-bottom:none;"><?php $kw_date_next = date("j M Y", get_option('kw_rank_nxt_date'));
+$kw_date_last = date("j M Y", get_option('kw_rank_nxt_date')-259200);
 
 printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s'), "<strong>".$kw_date_last."</strong><br>", "<strong>".$kw_date_next."</strong>");
 //echo "Last rank check was on <strong>".$kw_date_last."</strong><br>Next rank check scheduled for <strong>".$kw_date_next."</strong>"; ?></td>
@@ -255,9 +254,9 @@ printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s'), "<st
 </div>
   <br />
   <?php $datepicker_array = explode("-", $datepicker_min);
-  		$datepicker_min_edit = date('M j, Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0])); 
+  		$datepicker_min_edit = date('j M Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0])); 
 		$datepicker_array = explode("-", $datepicker_max);
-		$datepicker_max_edit = date('M j, Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0]));
+		$datepicker_max_edit = date('j M Y', mktime(0, 0, 0, $datepicker_array[1], $datepicker_array[2], $datepicker_array[0]));
   
   
    ?>
@@ -271,7 +270,8 @@ $("#maxdatepicker").val('<?php echo $datepicker_max_edit; ?>');
 		minDate: '<?php echo $datepicker_min_edit; ?>',
 		maxDate: '<?php echo $datepicker_max_edit; ?>',
 		showAnim: 'slideDown',
-		dateFormat: 'M d, yy', 
+		dateFormat: 'd M yy',
+		altFormat: 'd M yy', 
    		onSelect: function(dateText, inst) { 
 			plotAccordingToDate(dateText,daMax);
 		}
@@ -280,7 +280,8 @@ $("#maxdatepicker").val('<?php echo $datepicker_max_edit; ?>');
 		minDate: '<?php echo $datepicker_min_edit; ?>',
 		maxDate: '<?php echo $datepicker_max_edit; ?>',
 		showAnim: 'slideDown',
-		dateFormat: 'M d, yy', 
+		dateFormat: 'd M yy',
+		altFormat: 'd M yy', 
    		onSelect: function(dateText, inst) { 
 			plotAccordingToDate(daMin,dateText);
 		}
@@ -380,7 +381,7 @@ $("#placeholder").bind("plothover", function (event, pos, item) {
 				var myDate = new Date(x);
 				var monthNumber = myDate.getMonth();
                 showTooltip(item.pageX, item.pageY,
-                            item.series.label + "<br><?php echo $kw_i18n_rank; ?>: " + y + "<br>" + months[monthNumber] + "-" + (myDate.getDate()) + "-" + myDate.getFullYear());
+                            item.series.label + "<br><?php echo $kw_i18n_rank; ?>: " + y + "<br>" + (myDate.getDate()) + " " + months[monthNumber] + " " + myDate.getFullYear());
             }
 			
         else {
@@ -417,7 +418,7 @@ function plotAccordingToChoices() {
                points: { show: true }
            }, legend: { margin: 10, backgroundOpacity: .5, position: "sw" },
            grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#fff"] } }, 
-		   yaxis: { tickFormatter: negformat, max: "-1" }, xaxis: { mode: "time",  timeformat: "%b-%d-%y",  min: (new Date(daMin)).getTime(), max: (new Date(daMax)).getTime() }, selection: { mode: "x" },  });
+		   yaxis: { tickFormatter: negformat, max: "-1" }, xaxis: { mode: "time",  timeformat: "%d %b %y",  min: (new Date(daMin)).getTime(), max: (new Date(daMax)).getTime() }, selection: { mode: "x" },  });
 		   
 	
 		   
@@ -448,7 +449,7 @@ function plotAccordingToDate(dmin,dmax) {
 			legend: { margin: 10, backgroundOpacity: .5, position: "sw" },
            	grid: { hoverable: true, clickable: true, backgroundColor: { colors: ["#fff", "#fff"] } }, 
 			yaxis: { tickFormatter: negformat, max: "-1" }, 
-			xaxis: { mode: "time",  timeformat: "%b-%d-%y",  min: (new Date(dmin)).getTime(), max: (new Date(dmax)).getTime() },
+			xaxis: { mode: "time",  timeformat: "%d %b %y",  min: (new Date(dmin)).getTime(), max: (new Date(dmax)).getTime() },
 			selection: { mode: "x" },  
 		});
 	//}	
