@@ -5,7 +5,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: seo, rank, google, rankings, SERP, kwista
 Requires at least: 2.9
 Tested up to: 3.3.2
-Stable tag: 2.1.7
+Stable tag: 2.2
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Track your Google rankings every 3 days and see reports of your progress in a graph. 
 
@@ -29,6 +31,14 @@ You will also be able to visualize your traffic flow in response to ranking chan
 * Download a full CSV file containing all of your ranking data.
 * View a list of keywords that are currently driving traffic to your website and add them to the rank reporter.
 * Search using other Google Country URLs (e.g., google.co.uk)
+
+**Translators:**
+
+* French (fr_FR) - [Aurélien Baron](http://www.linkedin.com/pub/aurélien-baron/21/4b4/1b5)
+* Chinese (zh_CN) - [Annie Chen](http://www.linkedin.com/pub/annie-chen/3a/b0b/968)
+* Spanish (es_ES) - [Kelly Kremko Alegría](http://www.linkedin.com/pub/kelly-kremko-alegría/a/117/677)
+
+Many thanks to translators!
 
 **History:**
 
@@ -59,6 +69,10 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 4. Receive email notifications if a keyword/url set suddenly jumps or drops in rankings. 
 
 == Changelog ==
+
+= 2.2 = 
+
+* Added French, Chinese, and Spanish Languages
 
 = 2.1.7 = 
 
@@ -120,6 +134,10 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 * First Release
 
 == Upgrade Notice ==
+
+= 2.2 = 
+
+* Added French, Chinese, and Spanish Languages
 
 = 2.1.7 =
 

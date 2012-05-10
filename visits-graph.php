@@ -1,9 +1,28 @@
 <?php
-global $kw_add_to_reporter, $kw_confirm_add_to_reporter, $kw_check_rankings_now, $kw_not_yet_checked, $kw_not_in_top, $kw_click_to_sort, $kw_opens_new_window, $kw_i18n_remove, $kw_download_csv, $kw_i18n_rank, $kw_th_graph, $kw_th_keywords, $kw_th_url, $kw_th_current_rank, $kw_th_rank_change, $kw_th_start_rank, $kw_th_visits, $kw_th_start_date, $kw_i18n_plugin_name, $kw_i18n_to;
+$kw_i18n_plugin_name = __('SEO Rank Reporter', 'seo-rank-reporter');
+	$kw_add_to_reporter = _x('Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+	$kw_confirm_add_to_reporter = _x('Confirm and Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+	$kw_check_rankings_now = __('Check Rankings Now', 'seo-rank-reporter');
+	$kw_not_yet_checked = __('Not yet checked', 'seo-rank-reporter');
+	$kw_not_in_top = __('Not in top 100', 'seo-rank-reporter');
+	$kw_click_to_sort = __('Click to Sort', 'seo-rank-reporter');
+	$kw_opens_new_window = __('Opens New Window', 'seo-rank-reporter');
+	$kw_i18n_remove = __('Remove', 'seo-rank-reporter');
+	$kw_download_csv = _x('Download CSV', 'CSV is excel filetype - means "comma-separated"', 'seo-rank-reporter');
+	$kw_i18n_rank = __('Rank', 'seo-rank-reporter');
+	$kw_th_graph = __('Graph', 'seo-rank-reporter');
+	$kw_th_keywords = __('Keywords', 'seo-rank-reporter');
+	$kw_i18n_keyword = __('Keyword', 'seo-rank-reporter'); 
+	$kw_th_url = __('URL', 'seo-rank-reporter'); 
+	$kw_th_current_rank = __('Current Rank', 'seo-rank-reporter');
+	$kw_th_rank_change = __('Rank Change', 'seo-rank-reporter');
+	$kw_th_start_rank = __('Start Rank', 'seo-rank-reporter');
+	$kw_th_visits = __('Visits', 'seo-rank-reporter');
+	$kw_th_start_date = __('Start Date', 'seo-rank-reporter');
 ?>
 
  <div class="wrap">
-<h2><?php _e('Visits Graph'); ?></h2>
+<h2><?php _e('Visits Graph', 'seo-rank-reporter'); ?></h2>
 <?php
 $keywurl_array = seoRankReporterGetKeywurl();
 if (kw_isUrlInArray($keywurl_array)) {
@@ -13,12 +32,11 @@ if (kw_isUrlInArray($keywurl_array)) {
 <?php kw_top_right_affiliate(); ?>
  <script language="javascript">
 	function confirmRemove() {
-		return confirm("<?php _e('Do you really want to remove this keyword? This action cannot be undone.'); ?>")
+		return confirm("<?php _e('Do you really want to remove this keyword? This action cannot be undone.', 'seo-rank-reporter'); ?>")
 	}  
 	</script>
  <div style="height:30px;">
-			<input type="text" id="mindatepicker" class="fav-first" value="" />
-           <?php echo $kw_i18n_to; ?> <input type="text" id="maxdatepicker" class="fav-first" value="" />
+			<?php _e('Date Range:', 'seo-rank-reporter'); ?><input type="text" id="mindatepicker" class="fav-first" value="" /> - <input type="text" id="maxdatepicker" class="fav-first" value="" />
 	
 		
 </div>
@@ -214,7 +232,7 @@ $kw_q_check = implode("",$kw_rank_graph);
 if (empty($kw_q_check)) { ?>
 
 
-<div style="clear:both;height:50px;margin-top:50px;"><?php printf(__('%1$sNo data to graph%2$s - None of your keyword(s) for %3$s have any ranking data to report in a graph. Your website must rank within the first 100 results to be tracked.'), "<strong>", "</strong>", "<em>".bloginfo('url')."</em>"); ?> </div>
+<div style="clear:both;height:50px;margin-top:50px;"><?php printf(__('%1$sNo data to graph%2$s - None of your keyword(s) for %3$s have any ranking data to report in a graph. Your website must rank within the first 100 results to be tracked.', 'seo-rank-reporter'), "<strong>", "</strong>", "<em>".bloginfo('url')."</em>"); ?> </div>
 <?php } else { ?>
 <div style="clear:both;height:478px">&nbsp;</div>
 <?php } ?>
@@ -223,7 +241,7 @@ if (empty($kw_q_check)) { ?>
     <thead>
         <tr>
         <th title="<?php echo $kw_click_to_sort; ?>">#</th>
-        <th title="<?php _e('You can only graph one set at a time'); ?>"><?php echo $kw_th_graph; ?></th>
+        <th title="<?php _e('You can only graph one set at a time', 'seo-rank-reporter'); ?>"><?php echo $kw_th_graph; ?></th>
         <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_keywords; ?></th>
         <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_url; ?></th>
         <th title="<?php echo $kw_click_to_sort; ?>"><?php echo $kw_th_current_rank; ?></th>
@@ -273,9 +291,9 @@ foreach($keywurl_visits_array as $key_vis) { ?>
     <tr>
       <td style="border-bottom:none;"><?php $kw_date_next = date("j M Y", get_option('kw_rank_nxt_date'));
 $kw_date_last = date("j M Y", get_option('kw_rank_nxt_date')-259200);
-printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s'), "<strong>".$kw_date_last."</strong><br>", "<strong>".$kw_date_next."</strong>");
+printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s', 'seo-rank-reporter'), "<strong>".$kw_date_last."</strong><br>", "<strong>".$kw_date_next."</strong>");
  ?></td>
-      <td style="border-bottom:none"><?php printf(__('*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking outside the first 100 results%3$s *Visits are the number of page visits since the last rank check (every 3 days). Visits will be blank if the URL does not contain %4$s'), "<strong>", "</strong>", "<br />", "<strong>".get_bloginfo('url')."</strong>"); ?>
+      <td style="border-bottom:none"><?php printf(__('*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking outside the first 100 results%3$s *Visits are the number of page visits since the last rank check (every 3 days). Visits will be blank if the URL does not contain %4$s', 'seo-rank-reporter'), "<strong>", "</strong>", "<br />", "<strong>".get_bloginfo('url')."</strong>"); ?>
         </td>
     </tr>
   </table>

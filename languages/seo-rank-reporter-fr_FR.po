@@ -1,0 +1,793 @@
+# Copyright (C) 2012 SEO Rank Reporter
+# This file is distributed under the same license as the SEO Rank Reporter package.
+msgid ""
+msgstr ""
+"Project-Id-Version: SEO Rank Reporter 2.1.7\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-rank-reporter\n"
+"POT-Creation-Date: 2012-04-27 14:46:15+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: add-keywords.php:4 no-keywords.php:5
+msgid "Add Keywords"
+msgstr "Ajouter des mots-clés"
+
+#: add-keywords.php:8
+msgid "Do you really want to add this keyword?"
+msgstr "Voulez-vous vraiment ajouter ce mot-clé ?"
+
+#: add-keywords.php:45
+msgid "Please confirm that the URL below is correct."
+msgstr "Veuillez vous assurer que l'URL ci-dessous est correcte."
+
+#: add-keywords.php:47
+msgid ""
+"More than one URL of that domain was found. Please select the URL you'd like "
+"to add to the reporter"
+msgstr "Plus d'une URL a été trouvée pour ce domaine. Veuillez sélectionner l'URL que vous souhaitez ajouter au générateur de rapport."
+
+#: add-keywords.php:72
+msgid "Not in top 100 results"
+msgstr "Pas dans les 100 meilleurs résultats"
+
+#: add-keywords.php:93
+msgid "*Search was made at %1$s"
+msgstr "*Recherche effectuée à l'aide de %1$s"
+
+#: add-keywords.php:96
+msgid "Cancel"
+msgstr "Annuler"
+
+#: add-keywords.php:106
+msgid "You must add a keyword."
+msgstr "Vous devez ajouter un mot-clé."
+
+#: add-keywords.php:109
+msgid "You must add a full URL."
+msgstr "Vous devez ajouter une URL complète."
+
+#: add-keywords.php:144
+msgid "Referring Keywords"
+msgstr "Mots-clés de référencement"
+
+#: add-keywords.php:181
+msgid "Added"
+msgstr "Mot-clé ajouté"
+
+#: no-keywords.php:1
+msgid "No keywords have been added"
+msgstr "Aucun mot-clé n'a été ajouté"
+
+#: no-keywords.php:9
+msgid ""
+"You'll need to add keywords/urls to give the SEO Rank Reporter something to "
+"report. The SEO Rank Reporter is on a set schedule that was started when you "
+"activated this plugin. It will check your chosen keyword rankings every 3 "
+"days."
+msgstr "Vous aurez besoin d'ajouter des mots clés/URLs afin de permettre au SEO Rank Reporter de générer un rapport de positionnement. Le plan d'action du SEO Rank Reporter est prédéfini et a été déclenché au moment où vous avez activé le plugin. Le Reporter vérifie le positionnement de vos mots-clés tous les 3 jours."
+
+#: rank-report.php:23
+msgid "Rankings were not checked. Rankings can only be checked once per day."
+msgstr "Les positionnements n'ont pas été vérifiés. Les positionnements ne peuvent être vérifiés qu'une fois par jour."
+
+#: rank-report.php:33 visits-graph.php:16
+msgid ""
+"Do you really want to remove this keyword? This action cannot be undone."
+msgstr "Voulez-vous vraiment supprimer ce mot-clé? Vous ne pourrez par revenir en arrière."
+
+#: rank-report.php:69
+msgid "Graph from %1$s to %2$s"
+msgstr "Graphique à partir de% 1 $ s% 2 $ s"
+
+#: rank-report.php:244 visits-graph.php:276
+msgid "Last rank check was on %1$sNext rank check scheduled for %2$s"
+msgstr "La dernière vérification de positionnement a eu lieu le %1$s La prochaine vérification de positionnement est prévue pour le %2$s"
+
+#: rank-report.php:247 visits-graph.php:278
+msgid ""
+"*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking "
+"outside the first 100 results%3$s *Visits are the number of page visits "
+"since the last rank check (every 3 days). Visits will be blank if the URL "
+"does not contain %4$s"
+msgstr "Quand %1$sle changement de positionnement%2$s inclut %1$s+%2$s, ce mot-clé ne figure pas parmi les 100 meilleurs résultats%3$slors de son premier classement  *Visites correspond au nombre de visites de la page depuis la dernière vérification de positionnement (effectuée tous les 3 jours). Visites sera vide si l'URL ne contient pas  %4$s"
+
+#: rank-settings.php:11
+msgid "SEO Rank Reporter Settings"
+msgstr "Paramètrage du SEO Rank Reporter"
+
+#: rank-settings.php:20 rank-settings.php:25
+msgid "Email notification updated"
+msgstr "Notification par courriel mise à jour"
+
+#: rank-settings.php:29
+msgid ""
+"All data has been removed. If you wish to completely remove the table, you "
+"may now deactivate the plugin."
+msgstr "Toutes les données ont été supprimées. Si vous souhaitez complètement supprimer le tableau, vous pouvez dès maintenant désactiver le plugin."
+
+#: rank-settings.php:49
+msgid ""
+"Do you really want to delete all your data? This action cannot be undone."
+msgstr "Voulez-vous vraiment supprimer toutes vos données ? Vous ne pourrez pas revenir en arrière."
+
+#: rank-settings.php:59
+msgid "Google Country URL"
+msgstr "URL Google par pays"
+
+#: rank-settings.php:63
+msgid "Select which URL you'd like the Rank Reporter to use"
+msgstr "Sélectionnez l'URL que vous voulez voir utilisée par le Rank Reporter"
+
+#: rank-settings.php:65
+msgid "Default"
+msgstr "Par défaut"
+
+#: rank-settings.php:66
+msgid "American Samoa"
+msgstr "Samoa américaines"
+
+#: rank-settings.php:67
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: rank-settings.php:68
+msgid "Antigua and Barbuda"
+msgstr "Antigua-et-Barbuda"
+
+#: rank-settings.php:69
+msgid "Argentina"
+msgstr "Argentine"
+
+#: rank-settings.php:70
+msgid "Australia"
+msgstr "Australie"
+
+#: rank-settings.php:71
+msgid "Austria"
+msgstr "Autriche"
+
+#: rank-settings.php:72
+msgid "Azerbaijan"
+msgstr "Azerbaïdjan"
+
+#: rank-settings.php:73
+msgid "Belgium"
+msgstr "Belgique"
+
+#: rank-settings.php:74
+msgid "Brazil"
+msgstr "Brésil"
+
+#: rank-settings.php:75
+msgid "British Virgin Islands"
+msgstr "Iles Vierges britanniques"
+
+#: rank-settings.php:76
+msgid "Burundi"
+msgstr "Burundi"
+
+#: rank-settings.php:77
+msgid "Canada"
+msgstr "Canada"
+
+#: rank-settings.php:78
+msgid "Chad"
+msgstr "Tchad"
+
+#: rank-settings.php:79
+msgid "Chile"
+msgstr "Chili"
+
+#: rank-settings.php:80
+msgid "Colombia"
+msgstr "Colombie"
+
+#: rank-settings.php:81
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: rank-settings.php:82
+msgid "Côte d'Ivoire"
+msgstr "Côte d'Ivoire"
+
+#: rank-settings.php:83
+msgid "Cuba"
+msgstr "Cuba"
+
+#: rank-settings.php:84
+msgid "Dem. Rep. of the Congo"
+msgstr "République démocratique du Congo"
+
+#: rank-settings.php:85
+msgid "Denmark"
+msgstr "Danemark"
+
+#: rank-settings.php:86
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: rank-settings.php:87
+msgid "Dominican Republic"
+msgstr "République dominicaine"
+
+#: rank-settings.php:88
+msgid "Ecuador"
+msgstr "Équateur"
+
+#: rank-settings.php:89
+msgid "El Salvador"
+msgstr "Salvador"
+
+#: rank-settings.php:90
+msgid "Federated States of Micronesia"
+msgstr "États fédérés de Micronésie"
+
+#: rank-settings.php:91
+msgid "Fiji"
+msgstr "Fidji"
+
+#: rank-settings.php:92
+msgid "Finland"
+msgstr "Finlande"
+
+#: rank-settings.php:93
+msgid "France"
+msgstr "France"
+
+#: rank-settings.php:94
+msgid "The Gambia"
+msgstr "Gambie"
+
+#: rank-settings.php:95
+msgid "Georgia"
+msgstr "Géorgie"
+
+#: rank-settings.php:96
+msgid "Germany"
+msgstr "Allemagne"
+
+#: rank-settings.php:97
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: rank-settings.php:98
+msgid "Greece"
+msgstr "Grèce"
+
+#: rank-settings.php:99
+msgid "Greenland"
+msgstr "Groenland"
+
+#: rank-settings.php:100
+msgid "Guernsey"
+msgstr "Guernesey"
+
+#: rank-settings.php:101
+msgid "Honduras"
+msgstr "Honduras"
+
+#: rank-settings.php:102
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: rank-settings.php:103
+msgid "Hungary"
+msgstr "Hongrie"
+
+#: rank-settings.php:104
+msgid "India"
+msgstr "Inde"
+
+#: rank-settings.php:105
+msgid "Ireland"
+msgstr "Irlande"
+
+#: rank-settings.php:106
+msgid "Isle of Man"
+msgstr "Île de Man"
+
+#: rank-settings.php:107
+msgid "Israel"
+msgstr "Israël"
+
+#: rank-settings.php:108
+msgid "Italy"
+msgstr "Italie"
+
+#: rank-settings.php:109
+msgid "Jamaica"
+msgstr "Jamaïque"
+
+#: rank-settings.php:110
+msgid "Japan"
+msgstr "Japon"
+
+#: rank-settings.php:111
+msgid "Jersey"
+msgstr "Jersey"
+
+#: rank-settings.php:112
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+#: rank-settings.php:113
+msgid "Korea"
+msgstr "Corée du Sud"
+
+#: rank-settings.php:114
+msgid "Latvia"
+msgstr "Lettonie"
+
+#: rank-settings.php:115
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: rank-settings.php:116
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: rank-settings.php:117
+msgid "Lithuania"
+msgstr "Lithuanie"
+
+#: rank-settings.php:118
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#: rank-settings.php:119
+msgid "Malawi"
+msgstr "Malawi"
+
+#: rank-settings.php:120
+msgid "Malaysia"
+msgstr "Malaisie"
+
+#: rank-settings.php:121
+msgid "Malta"
+msgstr "Malte"
+
+#: rank-settings.php:122
+msgid "Mauritius"
+msgstr "Maurice"
+
+#: rank-settings.php:123
+msgid "México"
+msgstr "Mexique"
+
+#: rank-settings.php:124
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: rank-settings.php:125
+msgid "Namibia"
+msgstr "Namibie"
+
+#: rank-settings.php:126
+msgid "Nepal"
+msgstr "Népal"
+
+#: rank-settings.php:127
+msgid "Netherlands"
+msgstr "Pays-Bas"
+
+#: rank-settings.php:128
+msgid "New Zealand"
+msgstr "Nouvelle-Zélande"
+
+#: rank-settings.php:129
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: rank-settings.php:130
+msgid "Norfolk Island"
+msgstr "Île Norfolk"
+
+#: rank-settings.php:131
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: rank-settings.php:132
+msgid "Panamá"
+msgstr "Panama"
+
+#: rank-settings.php:133
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: rank-settings.php:134
+msgid "Perú"
+msgstr "Pérou"
+
+#: rank-settings.php:135
+msgid "Philippines"
+msgstr "Philippines"
+
+#: rank-settings.php:136
+msgid "Pitcairn Islands"
+msgstr "Îles Pitcairn"
+
+#: rank-settings.php:137
+msgid "Poland"
+msgstr "Pologne"
+
+#: rank-settings.php:138
+msgid "Portugal"
+msgstr "Portugal"
+
+#: rank-settings.php:139
+msgid "Puerto Rico"
+msgstr "Porto Rico"
+
+#: rank-settings.php:140
+msgid "Rep. of the Congo"
+msgstr "République du Congo"
+
+#: rank-settings.php:141
+msgid "Romania"
+msgstr "Roumanie"
+
+#: rank-settings.php:142
+msgid "Russia"
+msgstr "Russie"
+
+#: rank-settings.php:143
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: rank-settings.php:144
+msgid "Saint Helena"
+msgstr "Sainte-Hélène"
+
+#: rank-settings.php:145
+msgid "San Marino"
+msgstr "Saint Marin"
+
+#: rank-settings.php:146
+msgid "Singapore"
+msgstr "Singapour"
+
+#: rank-settings.php:147
+msgid "Slovakia"
+msgstr "Slovaquie"
+
+#: rank-settings.php:148
+msgid "South Africa"
+msgstr "Afrique du Sud"
+
+#: rank-settings.php:149
+msgid "Spain"
+msgstr "Espagne"
+
+#: rank-settings.php:150
+msgid "Sweden"
+msgstr "Suède"
+
+#: rank-settings.php:151
+msgid "Switzerland"
+msgstr "Suisse"
+
+#: rank-settings.php:152
+msgid "Taiwan"
+msgstr "Taïwan"
+
+#: rank-settings.php:153
+msgid "Thailand"
+msgstr "Thaïlande"
+
+#: rank-settings.php:154
+msgid "Trinidad and Tobago"
+msgstr "Trinité-et-Tobago"
+
+#: rank-settings.php:155
+msgid "Turkey"
+msgstr "Turquie"
+
+#: rank-settings.php:156
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: rank-settings.php:157
+msgid "United Arab Emirates"
+msgstr "Émirats arabes unis"
+
+#: rank-settings.php:158
+msgid "United Kingdom"
+msgstr "Royaume-Uni"
+
+#: rank-settings.php:159
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: rank-settings.php:160
+msgid "Uzbekistan"
+msgstr "Ouzbékistan"
+
+#: rank-settings.php:161
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: rank-settings.php:162
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: rank-settings.php:169
+msgid "Email Notifications"
+msgstr "Alertes courriel"
+
+#: rank-settings.php:175
+msgid "Check this box to turn on email notifications"
+msgstr "Cochez cette case pour activer les alertes courriel"
+
+#: rank-settings.php:180
+msgid "Email Recipient(s)"
+msgstr "Destinataire(s) du courriel"
+
+#: rank-settings.php:181
+msgid "(separate by comma)"
+msgstr "(séparer à l'aide d'une virgule)"
+
+#: rank-settings.php:185
+msgid "Notify me when a keyword changes rank %1$s positions (up or down)"
+msgstr "M'envoyer une alerte lorsque le positionnement d'un mot-clé change de  %1$s places (vers le haut ou vers le bas)"
+
+#: rank-settings.php:198
+msgid "Remove Ranking Data"
+msgstr "Suppression des données de positionnement"
+
+#: rank-settings.php:203
+msgid ""
+"To avoid accidentally losing your data, the SEO Rank Reporter plugin will "
+"not delete your data when it is deactivated or upgraded. Clicking the delete "
+"button below will remove all data collected (this action cannot be undone). "
+"Only use this button if you wish to completely remove the plugin and all its "
+"corresponding data from Wordpress."
+msgstr "Afin d'éviter toute perte accidentelle de vos données, le plugin SEO Rank Reporter ne supprime pas vos données quand il est désactivé ou mis à jour. Toutes les données collectées sont supprimées en cliquant le bouton de suppression ci-dessous (vous ne pourrez pas revenir en arrière). N'utilisez ce bouton que si vous souhaitez complètement supprimer le plugin et toutes ses données correspondantes à partir de Wordpress."
+
+#: rank-settings.php:207
+msgid "Remove keywords and all ranking data"
+msgstr "Supprimer les mots-clés et toutes les données de positionnement"
+
+#: rank-settings.php:221
+msgid "Try other Rank Tracking Tools"
+msgstr "Testez d'autres outils de suivi de positionnement"
+
+#: rank-settings.php:223
+msgid "Use these other sources to watch your site rankings:"
+msgstr "Utilisez ces autres sources pour regarder les positionnements de votre site:"
+
+#: rank-settings.php:225
+msgctxt "AuthorityLabs is a company name"
+msgid "AuthorityLabs - 10 keywords free"
+msgstr "AuthorityLabs - 10 mots-clés gratuits"
+
+#: rank-settings.php:226
+msgctxt "SEOMoz is a company name"
+msgid "SEOMoz's Rank Tracker - The Best SEO Software"
+msgstr "SEOMoz par Rank Tracker - le meilleur logiciel de référencement"
+
+#: rank-settings.php:239
+msgid "Like this Plugin?"
+msgstr "Ce plugin vous plaît ?"
+
+#: rank-settings.php:241
+msgid "Show your love by doing something below:"
+msgstr "Montrez-le d'une des manières suivantes :"
+
+#: rank-settings.php:243
+msgid "Rate it on Wordpress.org"
+msgstr "Donnez-lui une note sur Wordpress.org"
+
+#: rank-settings.php:244
+msgid "Donate!"
+msgstr "Faites un don !"
+
+#: rank-settings.php:245
+msgid "Vote that this version works"
+msgstr "Cette version fonctionne ? Votez pour elle."
+
+#: rank-settings.php:247
+msgid "Are you a native speaker of another language?"
+msgstr "Are you a native speaker of another language?"
+
+#: rank-settings.php:249
+msgid "Contact me about translating this plugin"
+msgstr "Contactez-moi pour traduire ce plugin"
+
+#: seo-rank-reporter.php:46
+msgctxt "between two dates - eg March 6 to April 5"
+msgid "to"
+msgstr "à"
+
+#. #-#-#-#-#  plugin.pot (SEO Rank Reporter 2.1.7)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: seo-rank-reporter.php:47
+msgid "SEO Rank Reporter"
+msgstr "SEO Rank Reporter"
+
+#: seo-rank-reporter.php:48
+msgctxt "\"Reporter\" is Proper Noun"
+msgid "Add to Reporter"
+msgstr "Ajouter au générateur de rapport"
+
+#: seo-rank-reporter.php:49
+msgctxt "\"Reporter\" is Proper Noun"
+msgid "Confirm and Add to Reporter"
+msgstr "Confirmer et ajouter au générateur de rapport"
+
+#: seo-rank-reporter.php:50
+msgid "Check Rankings Now"
+msgstr "Vérifier les positionnements maintenant"
+
+#: seo-rank-reporter.php:51
+msgid "Not yet checked"
+msgstr "Pas encore vérifié"
+
+#: seo-rank-reporter.php:52
+msgid "Not in top 100"
+msgstr "Pas dans les 100 meilleurs"
+
+#: seo-rank-reporter.php:53
+msgid "Click to Sort"
+msgstr "Cliquer pour trier"
+
+#: seo-rank-reporter.php:54
+msgid "Opens New Window"
+msgstr "Ouvre une nouvelle fenêtre"
+
+#: seo-rank-reporter.php:55
+msgid "Remove"
+msgstr "Supprimer"
+
+#: seo-rank-reporter.php:56
+msgctxt "CSV is excel filetype - means \"comma-separated\""
+msgid "Download CSV"
+msgstr "Télécharger le fichier CSV"
+
+#: seo-rank-reporter.php:57
+msgid "Rank"
+msgstr "Positionnement"
+
+#: seo-rank-reporter.php:58
+msgid "Graph"
+msgstr "Graphique"
+
+#: seo-rank-reporter.php:59
+msgid "Keywords"
+msgstr "Mots-clés"
+
+#: seo-rank-reporter.php:60
+msgid "Keyword"
+msgstr "Mot-clé"
+
+#: seo-rank-reporter.php:61
+msgid "URL"
+msgstr "URL"
+
+#: seo-rank-reporter.php:62
+msgid "Current Rank"
+msgstr "Positionnement actuel"
+
+#: seo-rank-reporter.php:63
+msgid "Rank Change"
+msgstr "Changement de position"
+
+#: seo-rank-reporter.php:64
+msgid "Start Rank"
+msgstr "Positionnement initial"
+
+#: seo-rank-reporter.php:65
+msgid "Visits"
+msgstr "Visites"
+
+#: seo-rank-reporter.php:66
+msgid "Start Date"
+msgstr "Date de commencement"
+
+#: seo-rank-reporter.php:68
+msgid "Update Email Notifications"
+msgstr "Mise à jour des alertes courriel"
+
+#: seo-rank-reporter.php:69
+msgid "Delete All Data"
+msgstr "Suppression de toutes les données"
+
+#: seo-rank-reporter.php:73
+msgid "Get keyword rankings checked daily"
+msgstr "Vérification journalière du positionnement des mots-clés"
+
+#: seo-rank-reporter.php:74
+msgid "Try Authority Labs%1$s - 10 Keywords Free"
+msgstr "Testez Authority Labs - 10 Mots-clés gratuits"
+
+#: seo-rank-reporter.php:81
+msgid "Twice Weekly"
+msgstr "Deux fois par semaine"
+
+#: seo-rank-reporter.php:177
+msgid ""
+"%1$sCountry URL Updated. The Rank Reporter will now use %2$s when searching "
+"for rankings.%3$sWarning: Any data collected up to this point will still "
+"reflect the old Google URL.%4$s"
+msgstr "%1$sURL de pays mise à jour. Le Rank Reporter va maintenant utiliser %2$s dans sa recherche de positionnements. %3$sAvertissement : Toutes les données recueillies jusqu'à présent reflèteront encore l'ancienne URL Google.%4$s"
+
+#: seo-rank-reporter.php:544
+msgid "Previous Rank"
+msgstr "Positionnement précédent"
+
+#: seo-rank-reporter.php:572
+msgid ""
+"%1$sKeyword Ranking Changes from %2$sThe following keywords have changed "
+"ranking positions on Google since the last rank check on %3$sKeyword%4$sURL%4"
+"$sCurrent Rank%4$sPrevious Rank%4$sRank Change%5$sChange email settings%6"
+"$sRank notifications brought to you by SEO Rank Reporter %7$s"
+msgstr "%4$sChangements de positionnement du mot-clé pour %2$sLes mots-clés suivants ont changé de place dans leur positionnement sur Google depuis la dernière vérification de positionnement du %3$s Mot-clé%4$sURL%4$sPositionnement actuel%4$sPositionnement précédent%4$sChangement de positionnement%5$sModification des paramètres de messagerie%6$sAlertes de positionnement offertes par SEO Rank Reporter%7$s"
+
+#: seo-rank-reporter.php:584
+msgid ""
+"Keyword Ranking Changes from %1$s The following keywords have changed "
+"ranking positions on Google since the last rank check on %2$s Change email "
+"settings at %3$s Rank notifications brought to you by SEO Rank Reporter %4$s"
+msgstr "Changement de positionnement de mots-clé pour  %1$s Les mots-clés suivants ont changé de positionnement sur Google depuis la dernière vérification de positionnement faite le %2$s Modification des paramètres de messagerie à %3$s Alertes de positionnement offertes par SEO Rank Reporter %4$s"
+
+#: seo-rank-reporter.php:588
+msgid "ALERT: Keyword Ranking Changes from "
+msgstr "ALERTE: changements de positionnement de mot-clés pour "
+
+#: seo-rank-reporter.php:589
+msgid "From: Rank Reporter | "
+msgstr "De: Rank Reporter | "
+
+#: seo-rank-reporter.php:638
+msgid "Not in top 100 Results"
+msgstr "Pas dans les 100 meilleurs résultats"
+
+#: seo-rank-reporter.php:645
+msgid "Keyword added to the Rank Reporter"
+msgstr "Mot-clé ajouté au Rank Reporter"
+
+#: seo-rank-reporter.php:650
+msgid "Keyword already added to Rank Reporter"
+msgstr "Mot-clé a déjà été ajouté à Rank Reporter"
+
+#: seo-rank-reporter.php:671
+msgid "Keyword removed"
+msgstr "Mot-clé supprimé"
+
+#: visits-graph.php:6
+msgid "Visits Graph"
+msgstr "Graphique des visites"
+
+#: visits-graph.php:217
+msgid ""
+"%1$sNo data to graph%2$s - None of your keyword(s) for %3$s have any ranking "
+"data to report in a graph. Your website must rank within the first 100 "
+"results to be tracked."
+msgstr "%1$sAucune donnée graphique%2$s - Aucun de vos mot-clés pour %3$s n'a de données de positionnement à signaler dans un graphe. Votre site doit apparaître parmi les 100 premiers résultats afin d'être suivi."
+
+#: visits-graph.php:226
+msgid "You can only graph one set at a time"
+msgstr "Vous ne pouvez faire la représentation graphique que d'un seul ensemble de données à la fois"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.kwista.com/"
+msgstr "http://www.kwista.com/"
+
+#. Description of the plugin/theme
+msgid ""
+"Track your Google rankings every 3 days and view a report in an easy-to-read "
+"graph. Vizualize your traffic spikes and drops in relation to your rankings "
+"and get emails notifying you of ranking changes."
+msgstr "Suivez votre positionnement Google tous les 3 jours et consultez un rapport dans un graphique facile à lire. Visualisez vos pics et vos chutes de trafic en relation avec vos positionnements et recevez par courriel des alertes portant sur vos changements de positionnements."
+
+#. Author of the plugin/theme
+msgid "David Scoville"
+msgstr "David Scoville"
+
+#. Author URI of the plugin/theme
+msgid "http://www.kwista.com"
+msgstr "http://www.kwista.com"
+

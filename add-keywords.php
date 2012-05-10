@@ -1,11 +1,18 @@
-<?php global $kw_add_to_reporter, $kw_opens_new_window, $kw_th_url, $kw_th_current_rank, $kw_confirm_add_to_reporter, $kw_i18n_keyword, $kw_th_visits; ?>
+<?php $kw_add_to_reporter = _x('Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+$kw_opens_new_window = __('Opens New Window', 'seo-rank-reporter');
+$kw_th_url = __('URL', 'seo-rank-reporter'); 
+$kw_th_current_rank = __('Current Rank', 'seo-rank-reporter');
+$kw_confirm_add_to_reporter = _x('Confirm and Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+$kw_i18n_keyword = __('Keyword', 'seo-rank-reporter');
+$kw_th_visits = __('Visits', 'seo-rank-reporter');
+  ?>
 
 <div class="wrap">
-<h2><?php _e('Add Keywords'); ?></h2>
+<h2><?php _e('Add Keywords', 'seo-rank-reporter'); ?></h2>
 <div class="wrap">
 <script language="javascript">
 	function confirmAdd() {
-		return confirm("<?php _e('Do you really want to add this keyword?'); ?>")
+		return confirm("<?php _e('Do you really want to add this keyword?', 'seo-rank-reporter'); ?>")
 	} 
 	
 	function cancelAddition() {
@@ -42,9 +49,9 @@ if ($_POST['first_submit_keyw'] == $kw_add_to_reporter && $_POST['keyword_item']
 		
         <h3 style="margin-top:0px"><?php echo $kw_i18n_keyword; ?>: <a href='<?php echo $kw_sengine_country; ?>search?q=<?php echo urlencode($kw_quick_keyw); ?>&pws=0' target="_blank" title="<?php echo $kw_opens_new_window; ?>"><?php echo $kw_quick_keyw; ?></a></h3>
 		<?php if (count($checked_rank[1]) < 2) { ?>
-        <p<?php _e('Please confirm that the URL below is correct.'); ?></p>
+        <p<?php _e('Please confirm that the URL below is correct.', 'seo-rank-reporter'); ?></p>
         <?php } else { ?>
-        <p><?php _e('More than one URL of that domain was found. Please select the URL you\'d like to add to the reporter'); ?></p>
+        <p><?php _e('More than one URL of that domain was found. Please select the URL you\'d like to add to the reporter', 'seo-rank-reporter'); ?></p>
         <?php } ?>
 			
             <input type="hidden" name="keyword_item" value="<?php echo $kw_quick_keyw; ?>" />
@@ -69,7 +76,7 @@ if ($_POST['first_submit_keyw'] == $kw_add_to_reporter && $_POST['keyword_item']
             
             </td>
             
-            <td><?php if ($checked_rank[4][$i] == "-1") { $checked_rank[4][$i] = __('Not in top 100 results'); } echo $checked_rank[4][$i]; ?></td>
+            <td><?php if ($checked_rank[4][$i] == "-1") { $checked_rank[4][$i] = __('Not in top 100 results', 'seo-rank-reporter'); } echo $checked_rank[4][$i]; ?></td>
             
             
             		</tr><?php	
@@ -90,10 +97,10 @@ if ($_POST['first_submit_keyw'] == $kw_add_to_reporter && $_POST['keyword_item']
             </tr> --><?php } ?> 
 
             </table>
-                    <p><em><?php printf(__('*Search was made at %1$s'), "<a target='_blank' href='".$kw_sengine_country."'>".$kw_sengine_country."</a>"); ?></em></p>
+                    <p><em><?php printf(__('*Search was made at %1$s', 'seo-rank-reporter'), "<a target='_blank' href='".$kw_sengine_country."'>".$kw_sengine_country."</a>"); ?></em></p>
 
 <br />
-        <input type="button" class="button-secondary" value="<?php _e('Cancel'); ?>" onclick="return cancelAddition()" />
+        <input type="button" class="button-secondary" value="<?php _e('Cancel', 'seo-rank-reporter'); ?>" onclick="return cancelAddition()" />
             <input type="submit" class="button-primary add-to-reporter-button" name="submit_keyw" value="<?php echo $kw_confirm_add_to_reporter; ?>" />
             </div>
             </form>
@@ -102,11 +109,11 @@ if ($_POST['first_submit_keyw'] == $kw_add_to_reporter && $_POST['keyword_item']
 		$kw_keyw_error_msg == "";
 		$kw_url_error_msg == "";
 
-		if ($_POST['first_submit_keyw'] == "Add to Reporter" && $_POST['keyword_item'] == "") {
-			$kw_keyw_error_msg = "<span style='color:red;'>".__('You must add a keyword.')."</span>";
+		if ($_POST['first_submit_keyw'] == $kw_add_to_reporter && $_POST['keyword_item'] == "") {
+			$kw_keyw_error_msg = "<span style='color:red;'>".__('You must add a keyword.', 'seo-rank-reporter')."</span>";
 		}
-		if ($_POST['first_submit_keyw'] == "Add to Reporter" && ($_POST['entry_url'] == "http://" || $_POST['entry_url'] == "")) {
-			$kw_url_error_msg = "<span style='color:red;'>".__('You must add a full URL.')."</span>";
+		if ($_POST['first_submit_keyw'] == $kw_add_to_reporter && ($_POST['entry_url'] == "http://" || $_POST['entry_url'] == "")) {
+			$kw_url_error_msg = "<span style='color:red;'>".__('You must add a full URL.', 'seo-rank-reporter')."</span>";
 		}
 		
 		 ?>
@@ -141,12 +148,16 @@ if ($_POST['first_submit_keyw'] == $kw_add_to_reporter && $_POST['keyword_item']
         </form>
         
     
-      <h3 class=""><span><?php _e('Referring Keywords'); ?></span></h3>
+      <h3 class=""><span><?php _e('Referring Keywords', 'seo-rank-reporter'); ?></span></h3>
      
 <?php  
 $kw_keyw_visits_array = get_option('kw_keyw_visits');
 if(empty($kw_keyw_visits_array)) {
-echo "No Referring Keywords<br><em>Usually, this means that you recently activated the plugin and no referring keywords have been recorded yet</em>";
+	
+_e('No Referring Keywords');
+echo '<br><em>';	
+_e('Usually, this means that you recently activated the plugin and no referring keywords have been recorded yet', 'seo-rank-reporter');
+echo '</em>';
 } else {
 ?>
 <table cellpadding="0" cellspacing="0" border="0" class="widefat sortable">
@@ -178,7 +189,7 @@ echo "No Referring Keywords<br><em>Usually, this means that you recently activat
  		
 		if (in_array($kw_visits_key, $keywurl_array)) {
 			$kw_td_bg_color = "kw_td_bg_color";
-			$submit_reporter = "<em>".__('Added')."</em>";
+			$submit_reporter = "<em>".__('Added', 'seo-rank-reporter')."</em>";
 		} else {
 			$kw_td_bg_color = "";
 			$submit_reporter = "<form action='../wp-admin/admin.php?page=seo-rank-reporter' method='post'>

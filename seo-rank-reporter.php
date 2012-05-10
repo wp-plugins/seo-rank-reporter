@@ -4,7 +4,7 @@ Plugin Name: SEO Rank Reporter
 Plugin URI: http://www.kwista.com/
 Description: Track your Google rankings every 3 days and view a report in an easy-to-read graph. Vizualize your traffic spikes and drops in relation to your rankings and get emails notifying you of ranking changes. 
 Author: David Scoville
-Version: 2.1.7
+Version: 2.2
 Author URI: http://www.kwista.com
 Text Domain: seo-rank-reporter
 */
@@ -43,42 +43,42 @@ function kw_seo_rank_menu(){
 	add_action( 'admin_footer-'. $kw_seo_rank_main, 'kw_seo_admin_footer' );
 
 }
-	$kw_i18n_to = _x('to', 'between two dates - eg March 6 to April 5');
-	$kw_i18n_plugin_name = __('SEO Rank Reporter');
-	$kw_add_to_reporter = _x('Add to Reporter', '"Reporter" is Proper Noun');
-	$kw_confirm_add_to_reporter = _x('Confirm and Add to Reporter', '"Reporter" is Proper Noun');
-	$kw_check_rankings_now = __('Check Rankings Now');
-	$kw_not_yet_checked = __('Not yet checked');
-	$kw_not_in_top = __('Not in top 100');
-	$kw_click_to_sort = __('Click to Sort');
-	$kw_opens_new_window = __('Opens New Window');
-	$kw_i18n_remove = __('Remove');
-	$kw_download_csv = _x('Download CSV', 'CSV is excel filetype - means "comma-separated"');
-	$kw_i18n_rank = __('Rank');
-	$kw_th_graph = __('Graph');
-	$kw_th_keywords = __('Keywords');
-	$kw_i18n_keyword = __('Keyword'); 
-	$kw_th_url = __('URL'); 
-	$kw_th_current_rank = __('Current Rank');
-	$kw_th_rank_change = __('Rank Change');
-	$kw_th_start_rank = __('Start Rank');
-	$kw_th_visits = __('Visits');
-	$kw_th_start_date = __('Start Date');
+	//$kw_i18n_to = _x('to', 'between two dates - eg March 6 to April 5', 'seo-rank-reporter');
+	$kw_i18n_plugin_name = __('SEO Rank Reporter', 'seo-rank-reporter');
+	$kw_add_to_reporter = _x('Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+	$kw_confirm_add_to_reporter = _x('Confirm and Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+	$kw_check_rankings_now = __('Check Rankings Now', 'seo-rank-reporter');
+	$kw_not_yet_checked = __('Not yet checked', 'seo-rank-reporter');
+	$kw_not_in_top = __('Not in top 100', 'seo-rank-reporter');
+	$kw_click_to_sort = __('Click to Sort', 'seo-rank-reporter');
+	$kw_opens_new_window = __('Opens New Window', 'seo-rank-reporter');
+	$kw_i18n_remove = __('Remove', 'seo-rank-reporter');
+	$kw_download_csv = _x('Download CSV', 'CSV is excel filetype - means "comma-separated"', 'seo-rank-reporter');
+	$kw_i18n_rank = __('Rank', 'seo-rank-reporter');
+	$kw_th_graph = __('Graph', 'seo-rank-reporter');
+	$kw_th_keywords = __('Keywords', 'seo-rank-reporter');
+	$kw_i18n_keyword = __('Keyword', 'seo-rank-reporter'); 
+	$kw_th_url = __('URL', 'seo-rank-reporter'); 
+	$kw_th_current_rank = __('Current Rank', 'seo-rank-reporter');
+	$kw_th_rank_change = __('Rank Change', 'seo-rank-reporter');
+	$kw_th_start_rank = __('Start Rank', 'seo-rank-reporter');
+	$kw_th_visits = __('Visits', 'seo-rank-reporter');
+	$kw_th_start_date = __('Start Date', 'seo-rank-reporter');
 	//Settings Specific
-	$kw_update_email_notifications = __('Update Email Notifications');
-	$kw_delete_all_data = __('Delete All Data');
+	$kw_update_email_notifications = __('Update Email Notifications', 'seo-rank-reporter');
+	$kw_delete_all_data = __('Delete All Data', 'seo-rank-reporter');
 	
 
 function kw_top_right_affiliate() {
-	echo "<div style='float:right;font-size:11px;padding-right:20px;margin-top:-10px;text-align:right;'><strong>".__('Get keyword rankings checked daily')."</strong> <br />
-<a href='http://authoritylabs.com/?src=reporter-wp-plugin' target='_blank'>". sprintf(__('Try Authority Labs%1$s - 10 Keywords Free'), '</a>')."</div>";
+	echo "<div style='float:right;font-size:11px;padding-right:20px;margin-top:-10px;text-align:right;'><strong>".__('Get keyword rankings checked daily', 'seo-rank-reporter')."</strong> <br />
+<a href='http://authoritylabs.com/?src=reporter-wp-plugin' target='_blank'>". __('Try Authority Labs - 10 Keywords Free', 'seo-rank-reporter')."</a></div>";
 }
 
 //Make wp-cron run on a weekly schedule
 function kw_seo_my_add_weekly( $schedules ) {
 	$schedules['twiceweekly'] = array(
 		'interval' => 259200, //that's how many seconds in 3 days, for the unix timestamp
-		'display' => __('Twice Weekly')
+		'display' => __('Twice Weekly', 'seo-rank-reporter')
 	);
 	return $schedules;
 }
@@ -174,7 +174,7 @@ function kw_seo_ajax_sengineUrl() {
 	
 			//echo '<div id="message" class="updated" style="display:none">Country URL Updated. The Rank Reporter will now use <strong>'.$sengineUrlResponse.'</strong> when searching for rankings.<br><span style="color:red">Warning: Any data collected up to this point will still reflect the old Google URL.</div>';
 			
-			printf(__('%1$sCountry URL Updated. The Rank Reporter will now use %2$s when searching for rankings.%3$sWarning: Any data collected up to this point will still reflect the old Google URL.%4$s'), '<div id="message" class="updated" style="display:none">', '<strong>'.$sengineUrlResponse.'</strong>', '<br><span style="color:red">', '</div>');
+			printf(__('%1$sCountry URL Updated. The Rank Reporter will now use %2$s when searching for rankings.%3$sWarning: Any data collected up to this point will still reflect the old Google URL.%4$s', 'seo-rank-reporter'), '<div id="message" class="updated" style="display:none">', '<strong>'.$sengineUrlResponse.'</strong>', '<br><span style="color:red">', '</div>');
 
 			die(); // this is required to return a proper result
 		}
@@ -541,7 +541,7 @@ function kw_cron_rank_checker() {
 					} else {
 						$email_msg .= '<tr><td>'.$kw_keyw.'</td><td>'.$kw_url.'</td><td>'.$current_rank.'</td><td>'.$previous_rank.'</td><td style="color:green;">'.$kw_rnk_change.' '.$rank_plus.'</td></tr>';
 					}
-					$plain_email_msg .= $kw_keyw." - ".$kw_url." \r\n".$kw_th_current_rank.": " . $current_rank . ", ".__('Previous Rank').": " .$previous_rank.", ".$kw_th_rank_change.": ".$kw_rnk_change.$rank_plus. " \r\n \r\n";
+					$plain_email_msg .= $kw_keyw." - ".$kw_url." \r\n".$kw_th_current_rank.": " . $current_rank . ", ".__('Previous Rank', 'seo-rank-reporter').": " .$previous_rank.", ".$kw_th_rank_change.": ".$kw_rnk_change.$rank_plus. " \r\n \r\n";
 				}
 			}
 			
@@ -569,7 +569,7 @@ function kw_seoRankReporterSendEmail($email_msg, $plain_email_msg) {
 		$kw_date_last = date("M-d-Y", get_option('kw_rank_nxt_date')-259200);
 		//$email_msg = '<h2>Keyword Ranking Changes from ' . get_bloginfo("url") . '</h2><p><em>The following keywords have changed ranking positions on Google since the last rank check on <strong>' . $kw_date_last .'</strong>:</em></p><table cellpadding="7" cellspacing="0"><thead><tr bgcolor="#FFFF99"><th>Keyword</th><th>URL</th><th>Current Rank</th><th>Previous Rank</th><th>Rank Change</th></tr></thead>' . $email_msg . '</table><br><p style="font-size:10px;color:#999999"><a href="'. get_bloginfo("url") .'/wp-admin/admin.php?page=seo-rank-settings">Change email settings</a> - Rank notifications brought to you by SEO Rank Reporter - <a href="http://www.kwista.com">Kwista</a>.</p>';
 		
-		$email_msg = sprintf(__('%1$sKeyword Ranking Changes from %2$sThe following keywords have changed ranking positions on Google since the last rank check on %3$sKeyword%4$sURL%4$sCurrent Rank%4$sPrevious Rank%4$sRank Change%5$sChange email settings%6$sRank notifications brought to you by SEO Rank Reporter %7$s'), 
+		$email_msg = sprintf(__('%1$sKeyword Ranking Changes from %2$sThe following keywords have changed ranking positions on Google since the last rank check on %3$sKeyword%4$sURL%4$sCurrent Rank%4$sPrevious Rank%4$sRank Change%5$sChange email settings%6$sRank notifications brought to you by SEO Rank Reporter %7$s', 'seo-rank-reporter'), 
 		"<h2>", 
 		get_bloginfo('url')."</h2><p><em>", 
 		'<strong>' . $kw_date_last .'</strong>:</em></p><table cellpadding="7" cellspacing="0"><thead><tr bgcolor="#FFFF99"><th>', 
@@ -581,12 +581,12 @@ function kw_seoRankReporterSendEmail($email_msg, $plain_email_msg) {
 		
 		//$plain_email_msg = "Keyword Ranking Changes from ".get_bloginfo('url') . " \r\n \r\n". "The following keywords have changed ranking positions on Google since the last rank check on ".$kw_date_last . ". \r\n \r\n". $plain_email_msg . " \r\n \r\n Change email settings at ". get_bloginfo("url") ."/wp-admin/admin.php?page=seo-rank-settings \r\n \r\n Rank notifications brought to you by SEO Rank Reporter - http://wordpress.org/extend/plugins/seo-rank-reporter/";
 		
-		$plain_email_msg = sprintf(__('Keyword Ranking Changes from %1$s The following keywords have changed ranking positions on Google since the last rank check on %2$s Change email settings at %3$s Rank notifications brought to you by SEO Rank Reporter %4$s'), get_bloginfo('url') . " \r\n \r\n", $kw_date_last . ". \r\n \r\n". $plain_email_msg . " \r\n \r\n", get_bloginfo("url") ."/wp-admin/admin.php?page=seo-rank-settings \r\n \r\n", "- http://wordpress.org/extend/plugins/seo-rank-reporter/");
+		$plain_email_msg = sprintf(__('Keyword Ranking Changes from %1$s The following keywords have changed ranking positions on Google since the last rank check on %2$s Change email settings at %3$s Rank notifications brought to you by SEO Rank Reporter %4$s', 'seo-rank-reporter'), get_bloginfo('url') . " \r\n \r\n", $kw_date_last . ". \r\n \r\n". $plain_email_msg . " \r\n \r\n", get_bloginfo("url") ."/wp-admin/admin.php?page=seo-rank-settings \r\n \r\n", "- http://wordpress.org/extend/plugins/seo-rank-reporter/");
 		
 		
 		$to = $kw_seo_emails;
-		$subject = __('ALERT: Keyword Ranking Changes from ') . str_replace('http://', '', get_bloginfo('url'));
-		$headers = __('From: Rank Reporter | ') . get_bloginfo('name') . " <" . get_bloginfo('admin_email') . "> \r\n";
+		$subject = __('ALERT: Keyword Ranking Changes from ', 'seo-rank-reporter') . str_replace('http://', '', get_bloginfo('url'));
+		$headers = __('From: Rank Reporter | ', 'seo-rank-reporter') . get_bloginfo('name') . " <" . get_bloginfo('admin_email') . "> \r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
 		$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			
@@ -635,19 +635,19 @@ function kw_seoRankReporterAddKeywords($kw_keyword, $kw_url) {
 			
 		seoRankReporterAddRow($checked_rank[0], $checked_rank[1], $checked_rank[2], $checked_rank[3], $checked_rank[4], $checked_rank[5], $theVisits);
 		
-		if ($checked_rank[4] == '-1') { $checked_rank[4] = __('Not in top 100 Results'); } 
+		if ($checked_rank[4] == '-1') { $checked_rank[4] = __('Not in top 100 Results', 'seo-rank-reporter'); } 
 		$success_msg .= "<li><strong>" . $checked_rank[0] . " - " . $checked_rank[1] . "</strong></li><li>".$kw_th_current_rank.": " . $checked_rank[4] . "</li>";
 					
 	}
 	
 	
 	if ($success_msg !== "") {
-		$success = "<div id='message' class='updated'>".__('Keyword added to the Rank Reporter').":<ul style='margin:10px 0 0 10px;'>".$success_msg."</ul></div>";
+		$success = "<div id='message' class='updated'>".__('Keyword added to the Rank Reporter', 'seo-rank-reporter').":<ul style='margin:10px 0 0 10px;'>".$success_msg."</ul></div>";
 	} else {
 		$success = "";
 	}
 	if ($error_msg !== "") { 
-		$error = "<div class='error'>".__('Keyword already added to Rank Reporter').":<ul style='margin-left:10px;'>" . $error_msg . "</ul></div>";
+		$error = "<div class='error'>".__('Keyword already added to Rank Reporter', 'seo-rank-reporter').":<ul style='margin-left:10px;'>" . $error_msg . "</ul></div>";
 	} else {
 		$error = "";
 	}
@@ -668,7 +668,7 @@ function kw_seoRankReporterRemoveKeyword($kw_remove_keyword, $kw_remove_url) {
 		update_option('kw_keyw_visits', $r_keyw_visits_array);
 	} 
 	
-	return "<div id='message' class='updated'>".__('Keyword removed').": <strong>$kw_remove_keyword - $kw_remove_url</strong></div>";
+	return "<div id='message' class='updated'>".__('Keyword removed', 'seo-rank-reporter').": <strong>$kw_remove_keyword - $kw_remove_url</strong></div>";
 	
 }
 function kw_isUrlInArray($keywurl_arra) {

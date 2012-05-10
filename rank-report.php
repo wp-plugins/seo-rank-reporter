@@ -1,7 +1,25 @@
 <?php 
 //For i18n
-global $kw_add_to_reporter, $kw_confirm_add_to_reporter, $kw_check_rankings_now, $kw_not_yet_checked, $kw_not_in_top, $kw_click_to_sort, $kw_opens_new_window, $kw_i18n_remove, $kw_download_csv, $kw_i18n_rank, $kw_th_graph, $kw_th_keywords, $kw_th_url, $kw_th_current_rank, $kw_th_rank_change, $kw_th_start_rank, $kw_th_visits, $kw_th_start_date, $kw_i18n_plugin_name, $kw_i18n_to;
-
+$kw_i18n_plugin_name = __('SEO Rank Reporter', 'seo-rank-reporter');
+	$kw_add_to_reporter = _x('Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+	$kw_confirm_add_to_reporter = _x('Confirm and Add to Reporter', '"Reporter" is Proper Noun', 'seo-rank-reporter');
+	$kw_check_rankings_now = __('Check Rankings Now', 'seo-rank-reporter');
+	$kw_not_yet_checked = __('Not yet checked', 'seo-rank-reporter');
+	$kw_not_in_top = __('Not in top 100', 'seo-rank-reporter');
+	$kw_click_to_sort = __('Click to Sort', 'seo-rank-reporter');
+	$kw_opens_new_window = __('Opens New Window', 'seo-rank-reporter');
+	$kw_i18n_remove = __('Remove', 'seo-rank-reporter');
+	$kw_download_csv = _x('Download CSV', 'CSV is excel filetype - means "comma-separated"', 'seo-rank-reporter');
+	$kw_i18n_rank = __('Rank', 'seo-rank-reporter');
+	$kw_th_graph = __('Graph', 'seo-rank-reporter');
+	$kw_th_keywords = __('Keywords', 'seo-rank-reporter');
+	$kw_i18n_keyword = __('Keyword', 'seo-rank-reporter'); 
+	$kw_th_url = __('URL', 'seo-rank-reporter'); 
+	$kw_th_current_rank = __('Current Rank', 'seo-rank-reporter');
+	$kw_th_rank_change = __('Rank Change', 'seo-rank-reporter');
+	$kw_th_start_rank = __('Start Rank', 'seo-rank-reporter');
+	$kw_th_visits = __('Visits', 'seo-rank-reporter');
+	$kw_th_start_date = __('Start Date', 'seo-rank-reporter');
 ?>
 
 <div class="wrap">
@@ -20,7 +38,7 @@ if ($_POST['check-rankings-now'] == $kw_check_rankings_now && (date("d", get_opt
 	kw_cron_rank_checker();
 	$kw_check_now_button = '';
 } elseif ($_POST['check-rankings-now'] == $kw_check_rankings_now && date("d", get_option('kw_rank_nxt_date')-259200) >= date('d')) {
-	$return_msg = "<div class='error'>".__('Rankings were not checked. Rankings can only be checked once per day.')."</div>"; 
+	$return_msg = "<div class='error'>".__('Rankings were not checked. Rankings can only be checked once per day.', 'seo-rank-reporter')."</div>"; 
 	$kw_check_now_button = '';
 } elseif (date("d", get_option('kw_rank_nxt_date')-259200) < date('d')) {
 	$kw_check_now_button = '<form method="post" action="" class="kw-check-now-form"><input type="submit" name="check-rankings-now" class="button-primary kw-check-now" value="'.$kw_check_rankings_now.'" /></form>';
@@ -30,7 +48,7 @@ if ($_POST['check-rankings-now'] == $kw_check_rankings_now && (date("d", get_opt
   
   <script language="javascript">
 	function confirmRemove() {
-		return confirm("<?php _e('Do you really want to remove this keyword? This action cannot be undone.'); ?>")
+		return confirm("<?php _e('Do you really want to remove this keyword? This action cannot be undone.', 'seo-rank-reporter'); ?>")
 	} 
 	$(document).ready(function () { 
   $(".kw_td_bg_color td").fadeTo("fast", 0.1);
@@ -66,7 +84,7 @@ kw_top_right_affiliate();
 ?>
 
 <div style="height:30px;">
-			<?php printf(__('Graph from %1$s to %2$s'), '<input type="text" id="mindatepicker" class="fav-first" value="" />', '<input type="text" id="maxdatepicker" class="fav-first" value="" />'); ?>
+			<?php _e('Date Range:', 'seo-rank-reporter'); ?> <input type="text" id="mindatepicker" class="fav-first" value="" /> - <input type="text" id="maxdatepicker" class="fav-first" value="" />
 			<?php echo $kw_check_now_button; ?>	
 </div>
 <div id="placeholder" style="width:95%;height:400px;margin-left:10px;"></div><br />
@@ -241,10 +259,10 @@ foreach($keywurl_array as $keywurl) {
       <td style="border-bottom:none;"><?php $kw_date_next = date("j M Y", get_option('kw_rank_nxt_date'));
 $kw_date_last = date("j M Y", get_option('kw_rank_nxt_date')-259200);
 
-printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s'), "<strong>".$kw_date_last."</strong><br>", "<strong>".$kw_date_next."</strong>");
+printf(__('Last rank check was on %1$sNext rank check scheduled for %2$s', 'seo-rank-reporter'), "<strong>".$kw_date_last."</strong><br>", "<strong>".$kw_date_next."</strong>");
 //echo "Last rank check was on <strong>".$kw_date_last."</strong><br>Next rank check scheduled for <strong>".$kw_date_next."</strong>"; ?></td>
  
-      <td style="border-bottom:none"><?php printf(__('*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking outside the first 100 results%3$s *Visits are the number of page visits since the last rank check (every 3 days). Visits will be blank if the URL does not contain %4$s'), "<strong>", "</strong>", "<br />", "<strong>".get_bloginfo('url')."</strong>"); ?> </td>
+      <td style="border-bottom:none"><?php printf(__('*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking outside the first 100 results%3$s *Visits are the number of page visits since the last rank check (every 3 days). Visits will be blank if the URL does not contain %4$s', 'seo-rank-reporter'), "<strong>", "</strong>", "<br />", "<strong>".get_bloginfo('url')."</strong>"); ?> </td>
     </tr>
   </table>
   <div>
