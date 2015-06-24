@@ -388,7 +388,7 @@ function kw_rank_checker($target_key,$entered_url,$first_time) {
 		
 
 	//Randomly select a user agent from the user agent array
-	$userAgent = $uesrAgent_array[rand(0,count($uesrAgent_array)-1)];
+	$userAgent = $userAgent_array[rand(0,count($userAgent_array)-1)];
 	$stopSearch = FALSE;
 	$rank = 1;
 	$page_num = 1;
