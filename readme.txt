@@ -4,8 +4,8 @@ Contributors: davidscoville
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQJ3EP32NVC5J
 Tags: seo, rank, google, rankings, SERP, kwista
 Requires at least: 2.9
-Tested up to: 4.2.2
-Stable tag: 2.2.2
+Tested up to: 4.3
+Stable tag: 2.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,10 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 4. Receive email notifications if a keyword/url set suddenly jumps or drops in rankings. 
 
 == Changelog ==
+
+= 2.2.3 = 
+
+* Fixed security issue
 
 = 2.2.2 = 
 
@@ -143,6 +147,10 @@ The SEO Rank Reporter checks your Google rankings every three days using Wordpre
 * First Release
 
 == Upgrade Notice ==
+
+= 2.2.3 = 
+
+* Fixed security issue
 
 = 2.2.2 = 
 
