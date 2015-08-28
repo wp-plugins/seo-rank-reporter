@@ -1,0 +1,794 @@
+# Copyright (C) 2012 SEO Rank Reporter
+# This file is distributed under the same license as the SEO Rank Reporter package.
+msgid ""
+msgstr ""
+"Project-Id-Version: SEO Rank Reporter 2.1.7\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/seo-rank-reporter\n"
+"POT-Creation-Date: 2012-04-27 14:46:15+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: add-keywords.php:4 no-keywords.php:5
+msgid "Add Keywords"
+msgstr "添加关键字"
+
+#: add-keywords.php:8
+msgid "Do you really want to add this keyword?"
+msgstr "您确定要添加这个关键字？"
+
+#: add-keywords.php:45
+msgid "Please confirm that the URL below is correct."
+msgstr "请确认下面的URL网址正确无误。"
+
+#: add-keywords.php:47
+msgid ""
+"More than one URL of that domain was found. Please select the URL you'd like "
+"to add to the reporter"
+msgstr "发现该域的多个URL。请选择您想添加到报告器中的URL网址"
+
+#: add-keywords.php:72
+msgid "Not in top 100 results"
+msgstr "不在前100个结果中"
+
+#: add-keywords.php:93
+msgid "*Search was made at %1$s"
+msgstr "*在％1 $ S进行搜索"
+
+#: add-keywords.php:96
+msgid "Cancel"
+msgstr "取消"
+
+#: add-keywords.php:106
+msgid "You must add a keyword."
+msgstr "您必须添加一个关键字。"
+
+#: add-keywords.php:109
+msgid "You must add a full URL."
+msgstr "您必须添加一个完整的URL网址。"
+
+#: add-keywords.php:144
+msgid "Referring Keywords"
+msgstr "引荐关键词"
+
+#: add-keywords.php:181
+msgid "Added"
+msgstr "已添加"
+
+#: no-keywords.php:1
+msgid "No keywords have been added"
+msgstr "未添加关键字"
+
+#: no-keywords.php:9
+msgid ""
+"You'll need to add keywords/urls to give the SEO Rank Reporter something to "
+"report. The SEO Rank Reporter is on a set schedule that was started when you "
+"activated this plugin. It will check your chosen keyword rankings every 3 "
+"days."
+msgstr "您需要添加关键字/URL网址，以便SEO排名报告器查询。 当您激活该插件时，会同时开启SEO排名报告器预先设定好的时间表。报告器将每隔3天在该时刻检查您选择的关键字排名。"
+
+#: rank-report.php:23
+msgid "Rankings were not checked. Rankings can only be checked once per day."
+msgstr "无法检查排名。每天只能检查一次排名。"
+
+#: rank-report.php:33 visits-graph.php:16
+msgid ""
+"Do you really want to remove this keyword? This action cannot be undone."
+msgstr "你确定要删除此关键字？此操作不可撤消。"
+
+#: rank-report.php:69
+msgid "Graph from %1$s to %2$s"
+msgstr "从 ％1$s 到 ％2$s 的图表"
+
+#: rank-report.php:244 visits-graph.php:276
+msgid "Last rank check was on %1$sNext rank check scheduled for %2$s"
+msgstr "上一次排名检查于％1$s进行。下一次排名检查将于％2 $ s进行。"
+
+#: rank-report.php:247 visits-graph.php:278
+msgid ""
+"*When %1$sRank Change%2$s includes %1$s+%2$s, this keyword started ranking "
+"outside the first 100 results%3$s *Visits are the number of page visits "
+"since the last rank check (every 3 days). Visits will be blank if the URL "
+"does not contain %4$s"
+msgstr "*当%1$s排名变化 ％2$s 包括％1$s +％2$s时，此关键字的初始排名不在前100个结果内％3$s *访问量是指上次排名检查（每3天一次）之后页面的访问次数。如果URL网址不包含％4$s，访问量将显示空白。"
+
+#: rank-settings.php:11
+msgid "SEO Rank Reporter Settings"
+msgstr "SEO排名报告器设置"
+
+#: rank-settings.php:20 rank-settings.php:25
+msgid "Email notification updated"
+msgstr "已更新电子邮件通知"
+
+#: rank-settings.php:29
+msgid ""
+"All data has been removed. If you wish to completely remove the table, you "
+"may now deactivate the plugin."
+msgstr "所有数据已被删除。如果您想彻底删除表格，您现在可以关闭插件。"
+
+#: rank-settings.php:49
+msgid ""
+"Do you really want to delete all your data? This action cannot be undone."
+msgstr "您确定要删除所有的数据？此操作不可撤消。"
+
+#: rank-settings.php:59
+msgid "Google Country URL"
+msgstr "Google各个国家URL网址"
+
+#: rank-settings.php:63
+msgid "Select which URL you'd like the Rank Reporter to use"
+msgstr "选择你想让排名报告器使用的URL"
+
+#: rank-settings.php:65
+msgid "Default"
+msgstr "默认"
+
+#: rank-settings.php:66
+msgid "American Samoa"
+msgstr "美属萨摩亚群岛"
+
+#: rank-settings.php:67
+msgid "Anguilla"
+msgstr "安圭拉岛"
+
+#: rank-settings.php:68
+msgid "Antigua and Barbuda"
+msgstr "安提瓜岛和巴布达岛"
+
+#: rank-settings.php:69
+msgid "Argentina"
+msgstr "阿根廷"
+
+#: rank-settings.php:70
+msgid "Australia"
+msgstr "澳大利亚"
+
+#: rank-settings.php:71
+msgid "Austria"
+msgstr "奥地利"
+
+#: rank-settings.php:72
+msgid "Azerbaijan"
+msgstr "阿塞拜疆"
+
+#: rank-settings.php:73
+msgid "Belgium"
+msgstr "比利时"
+
+#: rank-settings.php:74
+msgid "Brazil"
+msgstr "巴西"
+
+#: rank-settings.php:75
+msgid "British Virgin Islands"
+msgstr "英属维尔京群岛"
+
+#: rank-settings.php:76
+msgid "Burundi"
+msgstr "布隆迪"
+
+#: rank-settings.php:77
+msgid "Canada"
+msgstr "加拿大"
+
+#: rank-settings.php:78
+msgid "Chad"
+msgstr "乍得"
+
+#: rank-settings.php:79
+msgid "Chile"
+msgstr "智利"
+
+#: rank-settings.php:80
+msgid "Colombia"
+msgstr "哥伦比亚"
+
+#: rank-settings.php:81
+msgid "Costa Rica"
+msgstr "哥斯达黎加"
+
+#: rank-settings.php:82
+msgid "Côte d'Ivoire"
+msgstr "科特迪瓦"
+
+#: rank-settings.php:83
+msgid "Cuba"
+msgstr "古巴"
+
+#: rank-settings.php:84
+msgid "Dem. Rep. of the Congo"
+msgstr "刚果民主共和国"
+
+#: rank-settings.php:85
+msgid "Denmark"
+msgstr "丹麦"
+
+#: rank-settings.php:86
+msgid "Djibouti"
+msgstr "吉布提"
+
+#: rank-settings.php:87
+msgid "Dominican Republic"
+msgstr "多米尼加共和国"
+
+#: rank-settings.php:88
+msgid "Ecuador"
+msgstr "厄瓜多尔"
+
+#: rank-settings.php:89
+msgid "El Salvador"
+msgstr "萨尔瓦多"
+
+#: rank-settings.php:90
+msgid "Federated States of Micronesia"
+msgstr "密克罗尼西亚"
+
+#: rank-settings.php:91
+msgid "Fiji"
+msgstr "斐济"
+
+#: rank-settings.php:92
+msgid "Finland"
+msgstr "芬兰"
+
+#: rank-settings.php:93
+msgid "France"
+msgstr "法国"
+
+#: rank-settings.php:94
+msgid "The Gambia"
+msgstr "冈比亚"
+
+#: rank-settings.php:95
+msgid "Georgia"
+msgstr "乔治亚"
+
+#: rank-settings.php:96
+msgid "Germany"
+msgstr "德国"
+
+#: rank-settings.php:97
+msgid "Gibraltar"
+msgstr "直布罗陀"
+
+#: rank-settings.php:98
+msgid "Greece"
+msgstr "希腊"
+
+#: rank-settings.php:99
+msgid "Greenland"
+msgstr "格陵兰"
+
+#: rank-settings.php:100
+msgid "Guernsey"
+msgstr "格恩西岛"
+
+#: rank-settings.php:101
+msgid "Honduras"
+msgstr "洪都拉斯"
+
+#: rank-settings.php:102
+msgid "Hong Kong"
+msgstr "香港"
+
+#: rank-settings.php:103
+msgid "Hungary"
+msgstr "匈牙利"
+
+#: rank-settings.php:104
+msgid "India"
+msgstr "印度"
+
+#: rank-settings.php:105
+msgid "Ireland"
+msgstr "爱尔兰"
+
+#: rank-settings.php:106
+msgid "Isle of Man"
+msgstr "曼恩岛"
+
+#: rank-settings.php:107
+msgid "Israel"
+msgstr "以色列"
+
+#: rank-settings.php:108
+msgid "Italy"
+msgstr "意大利"
+
+#: rank-settings.php:109
+msgid "Jamaica"
+msgstr "牙买加"
+
+#: rank-settings.php:110
+msgid "Japan"
+msgstr "日本"
+
+#: rank-settings.php:111
+msgid "Jersey"
+msgstr "泽西岛"
+
+#: rank-settings.php:112
+msgid "Kazakhstan"
+msgstr "哈萨克斯坦"
+
+#: rank-settings.php:113
+msgid "Korea"
+msgstr "韩国"
+
+#: rank-settings.php:114
+msgid "Latvia"
+msgstr "拉脱维亚"
+
+#: rank-settings.php:115
+msgid "Lesotho"
+msgstr "莱索托"
+
+#: rank-settings.php:116
+msgid "Liechtenstein"
+msgstr "列支敦士登"
+
+#: rank-settings.php:117
+msgid "Lithuania"
+msgstr "立陶宛"
+
+#: rank-settings.php:118
+msgid "Luxembourg"
+msgstr "卢森堡"
+
+#: rank-settings.php:119
+msgid "Malawi"
+msgstr "马拉维"
+
+#: rank-settings.php:120
+msgid "Malaysia"
+msgstr "马来西亚"
+
+#: rank-settings.php:121
+msgid "Malta"
+msgstr "马耳他"
+
+#: rank-settings.php:122
+msgid "Mauritius"
+msgstr "毛里求斯"
+
+#: rank-settings.php:123
+msgid "México"
+msgstr "墨西哥"
+
+#: rank-settings.php:124
+msgid "Montserrat"
+msgstr "蒙特塞拉特岛"
+
+#: rank-settings.php:125
+msgid "Namibia"
+msgstr "纳米比亚"
+
+#: rank-settings.php:126
+msgid "Nepal"
+msgstr "尼泊尔"
+
+#: rank-settings.php:127
+msgid "Netherlands"
+msgstr "荷兰"
+
+#: rank-settings.php:128
+msgid "New Zealand"
+msgstr "新西兰"
+
+#: rank-settings.php:129
+msgid "Nicaragua"
+msgstr "尼加拉瓜"
+
+#: rank-settings.php:130
+msgid "Norfolk Island"
+msgstr "诺福克岛"
+
+#: rank-settings.php:131
+msgid "Pakistan"
+msgstr "巴基斯坦"
+
+#: rank-settings.php:132
+msgid "Panamá"
+msgstr "巴拿马"
+
+#: rank-settings.php:133
+msgid "Paraguay"
+msgstr "巴拉圭"
+
+#: rank-settings.php:134
+msgid "Perú"
+msgstr "秘鲁"
+
+#: rank-settings.php:135
+msgid "Philippines"
+msgstr "菲律宾"
+
+#: rank-settings.php:136
+msgid "Pitcairn Islands"
+msgstr "皮特克恩群岛"
+
+#: rank-settings.php:137
+msgid "Poland"
+msgstr "波兰"
+
+#: rank-settings.php:138
+msgid "Portugal"
+msgstr "葡萄牙"
+
+#: rank-settings.php:139
+msgid "Puerto Rico"
+msgstr "波多黎哥"
+
+#: rank-settings.php:140
+msgid "Rep. of the Congo"
+msgstr "刚果共和国"
+
+#: rank-settings.php:141
+msgid "Romania"
+msgstr "罗马尼亚"
+
+#: rank-settings.php:142
+msgid "Russia"
+msgstr "俄罗斯"
+
+#: rank-settings.php:143
+msgid "Rwanda"
+msgstr "卢旺达"
+
+#: rank-settings.php:144
+msgid "Saint Helena"
+msgstr "圣赫勒拿"
+
+#: rank-settings.php:145
+msgid "San Marino"
+msgstr "圣马力诺"
+
+#: rank-settings.php:146
+msgid "Singapore"
+msgstr "新加坡"
+
+#: rank-settings.php:147
+msgid "Slovakia"
+msgstr "斯洛伐克"
+
+#: rank-settings.php:148
+msgid "South Africa"
+msgstr "南非"
+
+#: rank-settings.php:149
+msgid "Spain"
+msgstr "西班牙"
+
+#: rank-settings.php:150
+msgid "Sweden"
+msgstr "瑞典"
+
+#: rank-settings.php:151
+msgid "Switzerland"
+msgstr "瑞士"
+
+#: rank-settings.php:152
+msgid "Taiwan"
+msgstr "台湾"
+
+#: rank-settings.php:153
+msgid "Thailand"
+msgstr "泰国"
+
+#: rank-settings.php:154
+msgid "Trinidad and Tobago"
+msgstr "特立尼达和多巴哥"
+
+#: rank-settings.php:155
+msgid "Turkey"
+msgstr "土耳其"
+
+#: rank-settings.php:156
+msgid "Ukraine"
+msgstr "乌克兰"
+
+#: rank-settings.php:157
+msgid "United Arab Emirates"
+msgstr "阿拉伯联合酋长国"
+
+#: rank-settings.php:158
+msgid "United Kingdom"
+msgstr "英国"
+
+#: rank-settings.php:159
+msgid "Uruguay"
+msgstr "乌拉圭"
+
+#: rank-settings.php:160
+msgid "Uzbekistan"
+msgstr "乌兹别克斯坦"
+
+#: rank-settings.php:161
+msgid "Vanuatu"
+msgstr "瓦努阿图"
+
+#: rank-settings.php:162
+msgid "Venezuela"
+msgstr "委内瑞拉"
+
+#: rank-settings.php:169
+msgid "Email Notifications"
+msgstr "电子邮件通知"
+
+#: rank-settings.php:175
+msgid "Check this box to turn on email notifications"
+msgstr "选中此项以打开电子邮件通知"
+
+#: rank-settings.php:180
+msgid "Email Recipient(s)"
+msgstr "电子邮件收件人"
+
+#: rank-settings.php:181
+msgid "(separate by comma)"
+msgstr "（用逗号分隔）"
+
+#: rank-settings.php:185
+msgid "Notify me when a keyword changes rank %1$s positions (up or down)"
+msgstr "关键字排名变化％1 $ s（向上或向下）位时通知我"
+
+#: rank-settings.php:198
+msgid "Remove Ranking Data"
+msgstr "删除排名数据"
+
+#: rank-settings.php:203
+msgid ""
+"To avoid accidentally losing your data, the SEO Rank Reporter plugin will "
+"not delete your data when it is deactivated or upgraded. Clicking the delete "
+"button below will remove all data collected (this action cannot be undone). "
+"Only use this button if you wish to completely remove the plugin and all its "
+"corresponding data from Wordpress."
+msgstr "为了避免意外丢失数据，SEO排名报告器插件在被关闭或升级时不会删除您的数据。点击下面的删除按钮将删除所有收集到的数据（此操作不可撤消）。只有当您想从WordPress中彻底删除插件及所有相应数据时，才应使用此按钮。"
+
+#: rank-settings.php:207
+msgid "Remove keywords and all ranking data"
+msgstr "删除关键字及所有排名数据"
+
+#: rank-settings.php:221
+msgid "Try other Rank Tracking Tools"
+msgstr "尝试其他的排名跟踪工具"
+
+#: rank-settings.php:223
+msgid "Use these other sources to watch your site rankings:"
+msgstr "使用其他资源观察您的网站排名："
+
+#: rank-settings.php:225
+msgctxt "AuthorityLabs is a company name"
+msgid "AuthorityLabs - 10 keywords free"
+msgstr "AuthorityLabs - 可免费查询10个关键字"
+
+#: rank-settings.php:226
+msgctxt "SEOMoz is a company name"
+msgid "SEOMoz's Rank Tracker - The Best SEO Software"
+msgstr "SEOMoz排名跟踪器 - 最好的SEO软件"
+
+#: rank-settings.php:239
+msgid "Like this Plugin?"
+msgstr "喜欢这款插件？"
+
+#: rank-settings.php:241
+msgid "Show your love by doing something below:"
+msgstr "为了表示您的喜爱，您可以："
+
+#: rank-settings.php:243
+msgid "Rate it on Wordpress.org"
+msgstr "在Wordpress.org上为它评分"
+
+#: rank-settings.php:244
+msgid "Donate!"
+msgstr "捐款！"
+
+#: rank-settings.php:245
+msgid "Vote that this version works"
+msgstr "投票支持这个版本"
+
+#: rank-settings.php:247
+msgid "Are you a native speaker of another language?"
+msgstr "您的母语不是英语？"
+
+#: rank-settings.php:249
+msgid "Contact me about translating this plugin"
+msgstr "请与我联系翻译该插件的事宜"
+
+#: seo-rank-reporter.php:46
+msgctxt "between two dates - eg March 6 to April 5"
+msgid "to"
+msgstr "至"
+
+#. #-#-#-#-#  plugin.pot (SEO Rank Reporter 2.1.7)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: seo-rank-reporter.php:47
+msgid "SEO Rank Reporter"
+msgstr "SEO排名报告器"
+
+#: seo-rank-reporter.php:48
+msgctxt "\"Reporter\" is Proper Noun"
+msgid "Add to Reporter"
+msgstr "添加至报告器"
+
+#: seo-rank-reporter.php:49
+msgctxt "\"Reporter\" is Proper Noun"
+msgid "Confirm and Add to Reporter"
+msgstr "确认并添加至报告器"
+
+#: seo-rank-reporter.php:50
+msgid "Check Rankings Now"
+msgstr "立即检查排名"
+
+#: seo-rank-reporter.php:51
+msgid "Not yet checked"
+msgstr "尚未检查"
+
+#: seo-rank-reporter.php:52
+msgid "Not in top 100"
+msgstr "不在前100个结果中"
+
+#: seo-rank-reporter.php:53
+msgid "Click to Sort"
+msgstr "点击排序"
+
+#: seo-rank-reporter.php:54
+msgid "Opens New Window"
+msgstr "打开新窗口"
+
+#: seo-rank-reporter.php:55
+msgid "Remove"
+msgstr "删除"
+
+#: seo-rank-reporter.php:56
+msgctxt "CSV is excel filetype - means \"comma-separated\""
+msgid "Download CSV"
+msgstr "下载CSV"
+
+#: seo-rank-reporter.php:57
+msgid "Rank"
+msgstr "排名"
+
+#: seo-rank-reporter.php:58
+msgid "Graph"
+msgstr "图表"
+
+#: seo-rank-reporter.php:59
+msgid "Keywords"
+msgstr "关键字
+"
+
+#: seo-rank-reporter.php:60
+msgid "Keyword"
+msgstr "关键字"
+
+#: seo-rank-reporter.php:61
+msgid "URL"
+msgstr "URL网址"
+
+#: seo-rank-reporter.php:62
+msgid "Current Rank"
+msgstr "目前排名"
+
+#: seo-rank-reporter.php:63
+msgid "Rank Change"
+msgstr "排名变化"
+
+#: seo-rank-reporter.php:64
+msgid "Start Rank"
+msgstr "初始排名"
+
+#: seo-rank-reporter.php:65
+msgid "Visits"
+msgstr "访问量"
+
+#: seo-rank-reporter.php:66
+msgid "Start Date"
+msgstr "开始日期"
+
+#: seo-rank-reporter.php:68
+msgid "Update Email Notifications"
+msgstr "更新电子邮件通知"
+
+#: seo-rank-reporter.php:69
+msgid "Delete All Data"
+msgstr "删除所有数据"
+
+#: seo-rank-reporter.php:73
+msgid "Get keyword rankings checked daily"
+msgstr "每日检查关键字排名"
+
+#: seo-rank-reporter.php:74
+msgid "Try Authority Labs%1$s - 10 Keywords Free"
+msgstr "试用Authority Labs1％$ S - 可免费查询10个关键字"
+
+#: seo-rank-reporter.php:81
+msgid "Twice Weekly"
+msgstr "每周两次"
+
+#: seo-rank-reporter.php:177
+msgid ""
+"%1$sCountry URL Updated. The Rank Reporter will now use %2$s when searching "
+"for rankings.%3$sWarning: Any data collected up to this point will still "
+"reflect the old Google URL.%4$s"
+msgstr "％1 $ s各个国家URL网址已更新。在搜索排名时，排名报告器现在将使用％2 $ Ss。％3 $s警告：目前为止收集到的任何数据仍反映的是旧的Google URL网址。％4 $ S"
+
+#: seo-rank-reporter.php:544
+msgid "Previous Rank"
+msgstr "上次排名"
+
+#: seo-rank-reporter.php:572
+msgid ""
+"%1$sKeyword Ranking Changes from %2$sThe following keywords have changed "
+"ranking positions on Google since the last rank check on %3$sKeyword%4$sURL%4"
+"$sCurrent Rank%4$sPrevious Rank%4$sRank Change%5$sChange email settings%6"
+"$sRank notifications brought to you by SEO Rank Reporter %7$s"
+msgstr "％1 $ s关键字排名变化已经从%2$s以下关键字自上次于％3 $ s进行的排名检查后在Google上的排名位置有所变化。关键字％4 $ SURL网址％4 $ s目前排名％4$s上次排名％4$s排名变化％5$s更改电子邮件设置%6$s由SEO排名报告器发送排名通知％7$s"
+
+#: seo-rank-reporter.php:584
+msgid ""
+"Keyword Ranking Changes from %1$s The following keywords have changed "
+"ranking positions on Google since the last rank check on %2$s Change email "
+"settings at %3$s Rank notifications brought to you by SEO Rank Reporter %4$s"
+msgstr "关键字排名在%2$s中的变化 以下关键字自上次于％3 $ s进行的排名检查后，在Google上的排名位置有所变化。关键字％4 $ sURL网址％4 $ s目前排名％4$s上次排名％4$s排名变化％5$s更改在%6$s中的电子邮件设置 由SEO排名报告器发送给您的排名通知％7$s"
+
+#: seo-rank-reporter.php:588
+msgid "ALERT: Keyword Ranking Changes from "
+msgstr "警告：关键字排名在 的变化"
+
+#: seo-rank-reporter.php:589
+msgid "From: Rank Reporter | "
+msgstr "从：排名报告器|"
+
+#: seo-rank-reporter.php:638
+msgid "Not in top 100 Results"
+msgstr "不在前100个结果中"
+
+#: seo-rank-reporter.php:645
+msgid "Keyword added to the Rank Reporter"
+msgstr "关键字添加至排名报告器"
+
+#: seo-rank-reporter.php:650
+msgid "Keyword already added to Rank Reporter"
+msgstr "关键字已添加至排名报告器"
+
+#: seo-rank-reporter.php:671
+msgid "Keyword removed"
+msgstr "关键字已删除"
+
+#: visits-graph.php:6
+msgid "Visits Graph"
+msgstr "访问量图表"
+
+#: visits-graph.php:217
+msgid ""
+"%1$sNo data to graph%2$s - None of your keyword(s) for %3$s have any ranking "
+"data to report in a graph. Your website must rank within the first 100 "
+"results to be tracked."
+msgstr "％1 $ 没有数据添加至图表％2 $ S - 您为％3 $ S设置的关键字均没有任何排名数据可以在图表中报告。您的网站必须排在前100个结果中才能被跟踪。"
+
+#: visits-graph.php:226
+msgid "You can only graph one set at a time"
+msgstr "您一次只能用图表展示一组数据"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.kwista.com/"
+msgstr "http://www.kwista.com/"
+
+#. Description of the plugin/theme
+msgid ""
+"Track your Google rankings every 3 days and view a report in an easy-to-read "
+"graph. Vizualize your traffic spikes and drops in relation to your rankings "
+"and get emails notifying you of ranking changes."
+msgstr "每3天一次跟踪您的Google排名，并用简单易读的图表查看报告。把关系到您排名的流量高峰和下降形象化，并接收电子邮件通知您的排名变化。"
+
+#. Author of the plugin/theme
+msgid "David Scoville"
+msgstr "大卫·斯科维尔"
+
+#. Author URI of the plugin/theme
+msgid "http://www.kwista.com"
+msgstr "http://www.kwista.com"
+
